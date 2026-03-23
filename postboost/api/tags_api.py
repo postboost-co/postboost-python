@@ -62,6 +62,7 @@ class TagsApi:
     ) -> Tag:
         """Create tag
 
+        Creates a new color-coded tag in the workspace for organizing posts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -99,7 +100,7 @@ class TagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tag",
+            '201': "Tag",
             '401': "object",
             '422': "object",
         }
@@ -134,6 +135,7 @@ class TagsApi:
     ) -> ApiResponse[Tag]:
         """Create tag
 
+        Creates a new color-coded tag in the workspace for organizing posts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -171,7 +173,7 @@ class TagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tag",
+            '201': "Tag",
             '401': "object",
             '422': "object",
         }
@@ -206,6 +208,7 @@ class TagsApi:
     ) -> RESTResponseType:
         """Create tag
 
+        Creates a new color-coded tag in the workspace for organizing posts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -243,7 +246,7 @@ class TagsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Tag",
+            '201': "Tag",
             '401': "object",
             '422': "object",
         }
@@ -354,6 +357,7 @@ class TagsApi:
     ) -> object:
         """Delete tag
 
+        Permanently deletes a tag. Posts that had this tag attached are unaffected.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -426,6 +430,7 @@ class TagsApi:
     ) -> ApiResponse[object]:
         """Delete tag
 
+        Permanently deletes a tag. Posts that had this tag attached are unaffected.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -498,6 +503,7 @@ class TagsApi:
     ) -> RESTResponseType:
         """Delete tag
 
+        Permanently deletes a tag. Posts that had this tag attached are unaffected.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -633,6 +639,7 @@ class TagsApi:
     ) -> Tag:
         """Get tag
 
+        Returns a single tag by UUID.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -705,6 +712,7 @@ class TagsApi:
     ) -> ApiResponse[Tag]:
         """Get tag
 
+        Returns a single tag by UUID.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -777,6 +785,7 @@ class TagsApi:
     ) -> RESTResponseType:
         """Get tag
 
+        Returns a single tag by UUID.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -911,6 +920,7 @@ class TagsApi:
     ) -> ListTags200Response:
         """List tags
 
+        Returns all tags defined in the workspace.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -978,6 +988,7 @@ class TagsApi:
     ) -> ApiResponse[ListTags200Response]:
         """List tags
 
+        Returns all tags defined in the workspace.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1045,6 +1056,7 @@ class TagsApi:
     ) -> RESTResponseType:
         """List tags
 
+        Returns all tags defined in the workspace.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1174,6 +1186,7 @@ class TagsApi:
     ) -> object:
         """Update tag
 
+        Updates a tag's name or color.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1251,6 +1264,7 @@ class TagsApi:
     ) -> ApiResponse[object]:
         """Update tag
 
+        Updates a tag's name or color.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1328,6 +1342,7 @@ class TagsApi:
     ) -> RESTResponseType:
         """Update tag
 
+        Updates a tag's name or color.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str

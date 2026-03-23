@@ -21,6 +21,8 @@ Method | HTTP request | Description
 
 Add generic subscription
 
+Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -91,8 +93,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**201** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -100,6 +103,8 @@ Name | Type | Description  | Notes
 > object cancel_subscription(workspace_uuid)
 
 Cancel subscription
+
+Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
 
 ### Example
 
@@ -170,6 +175,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -177,6 +183,8 @@ Name | Type | Description  | Notes
 > object change_subscription_plan(workspace_uuid, change_subscription_plan_request)
 
 Change subscription plan
+
+Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
 
 ### Example
 
@@ -250,6 +258,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -332,6 +341,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Checkout URL |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -339,6 +349,8 @@ Name | Type | Description  | Notes
 > object create_subscription(workspace_uuid, subscription_input)
 
 Create subscription
+
+Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
 
 ### Example
 
@@ -412,6 +424,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -420,6 +433,8 @@ Name | Type | Description  | Notes
 > object delete_subscription(workspace_uuid)
 
 Delete subscription
+
+Removes the subscription record from the workspace. Admin only.
 
 ### Example
 
@@ -490,6 +505,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -497,6 +513,8 @@ Name | Type | Description  | Notes
 > Subscription get_subscription(workspace_uuid)
 
 Get subscription
+
+Returns the active subscription for the workspace, or `null` if none exists. Admin only.
 
 ### Example
 
@@ -567,6 +585,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Subscription details or null |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -574,6 +593,8 @@ Name | Type | Description  | Notes
 > object remove_generic_subscription(workspace_uuid)
 
 Remove generic subscription
+
+Removes the generic (non-Stripe) subscription from the workspace. Admin only.
 
 ### Example
 
@@ -644,6 +665,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -651,6 +673,8 @@ Name | Type | Description  | Notes
 > object resume_subscription(workspace_uuid)
 
 Resume subscription
+
+Resumes a previously canceled subscription before it expires. Admin only.
 
 ### Example
 
@@ -721,6 +745,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -728,6 +753,8 @@ Name | Type | Description  | Notes
 > object update_subscription(workspace_uuid, subscription_update_input)
 
 Update subscription
+
+Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
 
 ### Example
 
@@ -801,6 +828,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**is_admin** | **bool** |  | [optional] 
+**id** | **int** |  | 
+**name** | **str** |  | 
+**email** | **str** |  | 
+**is_admin** | **bool** |  | 
 **email_verified_at** | **datetime** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**created_at** | **datetime** |  | 
 
 ## Example
 

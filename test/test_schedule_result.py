@@ -41,6 +41,7 @@ class TestScheduleResult(unittest.TestCase):
             )
         else:
             return ScheduleResult(
+                success = True,
         )
         """
 

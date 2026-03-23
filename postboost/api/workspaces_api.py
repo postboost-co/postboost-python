@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from postboost.models.delete_workspaces_bulk_request import DeleteWorkspacesBulkRequest
@@ -66,6 +66,7 @@ class WorkspacesApi:
     ) -> object:
         """Add user to workspace
 
+        Adds an existing user to the workspace with a specified role. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -103,8 +104,9 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -138,6 +140,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Add user to workspace
 
+        Adds an existing user to the workspace with a specified role. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -175,8 +178,9 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -210,6 +214,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Add user to workspace
 
+        Adds an existing user to the workspace with a specified role. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -247,8 +252,9 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -392,7 +398,7 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '201': "Workspace",
             '401': "object",
             '403': "object",
             '422': "object",
@@ -462,7 +468,7 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '201': "Workspace",
             '401': "object",
             '403': "object",
             '422': "object",
@@ -532,7 +538,7 @@ class WorkspacesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Workspace",
+            '201': "Workspace",
             '401': "object",
             '403': "object",
             '422': "object",
@@ -640,6 +646,7 @@ class WorkspacesApi:
     ) -> object:
         """Delete workspace
 
+        Permanently deletes a single workspace and all its associated data. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -676,6 +683,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -708,6 +716,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Delete workspace
 
+        Permanently deletes a single workspace and all its associated data. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -744,6 +753,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -776,6 +786,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Delete workspace
 
+        Permanently deletes a single workspace and all its associated data. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -812,6 +823,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -904,6 +916,7 @@ class WorkspacesApi:
     ) -> object:
         """Delete workspaces (bulk)
 
+        Permanently deletes one or more workspaces and all their associated data. Admin only.
 
         :param delete_workspaces_bulk_request: (required)
         :type delete_workspaces_bulk_request: DeleteWorkspacesBulkRequest
@@ -972,6 +985,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Delete workspaces (bulk)
 
+        Permanently deletes one or more workspaces and all their associated data. Admin only.
 
         :param delete_workspaces_bulk_request: (required)
         :type delete_workspaces_bulk_request: DeleteWorkspacesBulkRequest
@@ -1040,6 +1054,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Delete workspaces (bulk)
 
+        Permanently deletes one or more workspaces and all their associated data. Admin only.
 
         :param delete_workspaces_bulk_request: (required)
         :type delete_workspaces_bulk_request: DeleteWorkspacesBulkRequest
@@ -1181,6 +1196,7 @@ class WorkspacesApi:
     ) -> Workspace:
         """Get workspace
 
+        Returns a single workspace by UUID including its subscription status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1217,6 +1233,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workspace",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1249,6 +1266,7 @@ class WorkspacesApi:
     ) -> ApiResponse[Workspace]:
         """Get workspace
 
+        Returns a single workspace by UUID including its subscription status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1285,6 +1303,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workspace",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1317,6 +1336,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Get workspace
 
+        Returns a single workspace by UUID including its subscription status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1353,6 +1373,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Workspace",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1432,6 +1453,7 @@ class WorkspacesApi:
         keyword: Optional[StrictStr] = None,
         subscription_status: Optional[StrictStr] = None,
         access_status: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1455,6 +1477,8 @@ class WorkspacesApi:
         :type subscription_status: str
         :param access_status:
         :type access_status: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1481,6 +1505,7 @@ class WorkspacesApi:
             keyword=keyword,
             subscription_status=subscription_status,
             access_status=access_status,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1509,6 +1534,7 @@ class WorkspacesApi:
         keyword: Optional[StrictStr] = None,
         subscription_status: Optional[StrictStr] = None,
         access_status: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1532,6 +1558,8 @@ class WorkspacesApi:
         :type subscription_status: str
         :param access_status:
         :type access_status: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1558,6 +1586,7 @@ class WorkspacesApi:
             keyword=keyword,
             subscription_status=subscription_status,
             access_status=access_status,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1586,6 +1615,7 @@ class WorkspacesApi:
         keyword: Optional[StrictStr] = None,
         subscription_status: Optional[StrictStr] = None,
         access_status: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1609,6 +1639,8 @@ class WorkspacesApi:
         :type subscription_status: str
         :param access_status:
         :type access_status: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1635,6 +1667,7 @@ class WorkspacesApi:
             keyword=keyword,
             subscription_status=subscription_status,
             access_status=access_status,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1658,6 +1691,7 @@ class WorkspacesApi:
         keyword,
         subscription_status,
         access_status,
+        page,
         _request_auth,
         _content_type,
         _headers,
@@ -1691,6 +1725,10 @@ class WorkspacesApi:
         if access_status is not None:
             
             _query_params.append(('access_status', access_status))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
             
         # process the header parameters
         # process the form parameters
@@ -1749,6 +1787,7 @@ class WorkspacesApi:
     ) -> object:
         """Remove user from workspace
 
+        Removes a user's access to the workspace. The user account is not deleted. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1788,6 +1827,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1820,6 +1860,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Remove user from workspace
 
+        Removes a user's access to the workspace. The user account is not deleted. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1859,6 +1900,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1891,6 +1933,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Remove user from workspace
 
+        Removes a user's access to the workspace. The user account is not deleted. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1930,6 +1973,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2038,6 +2082,7 @@ class WorkspacesApi:
     ) -> object:
         """Update workspace
 
+        Updates a workspace's name, color, or access status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2077,6 +2122,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -2110,6 +2156,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Update workspace
 
+        Updates a workspace's name, color, or access status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2149,6 +2196,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -2182,6 +2230,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Update workspace
 
+        Updates a workspace's name, color, or access status. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2221,6 +2270,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -2330,6 +2380,7 @@ class WorkspacesApi:
     ) -> object:
         """Update user role in workspace
 
+        Changes a user's role or permissions within the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2369,6 +2420,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2401,6 +2453,7 @@ class WorkspacesApi:
     ) -> ApiResponse[object]:
         """Update user role in workspace
 
+        Changes a user's role or permissions within the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2440,6 +2493,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2472,6 +2526,7 @@ class WorkspacesApi:
     ) -> RESTResponseType:
         """Update user role in workspace
 
+        Changes a user's role or permissions within the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2511,6 +2566,7 @@ class WorkspacesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,

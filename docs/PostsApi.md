@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Queue confirmation |  -  |
+**201** | Queue confirmation |  -  |
 **401** |  |  -  |
 **404** |  |  -  |
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created post |  -  |
+**201** | Created post |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
@@ -267,6 +267,8 @@ Name | Type | Description  | Notes
 > DeleteResult delete_post(workspace_uuid, post_uuid, delete_post_request=delete_post_request)
 
 Delete post
+
+Deletes a post. Use `delete_mode` to control whether to also remove the published content from social platforms.
 
 ### Example
 
@@ -432,6 +434,8 @@ Name | Type | Description  | Notes
 > Post get_post(workspace_uuid, post_uuid)
 
 Get post
+
+Returns a single post with all its versions and associated accounts.
 
 ### Example
 
@@ -678,6 +682,8 @@ Name | Type | Description  | Notes
 > object update_post(workspace_uuid, post_uuid, post_input)
 
 Update post
+
+Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
 
 ### Example
 

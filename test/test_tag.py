@@ -43,6 +43,10 @@ class TestTag(unittest.TestCase):
             )
         else:
             return Tag(
+                id = 56,
+                uuid = '',
+                name = 'Campaign 2025',
+                hex_color = '#3B82F6',
         )
         """
 

@@ -66,6 +66,7 @@ class SubscriptionsApi:
     ) -> object:
         """Add generic subscription
 
+        Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -103,8 +104,9 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -137,6 +139,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Add generic subscription
 
+        Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -174,8 +177,9 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -208,6 +212,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Add generic subscription
 
+        Assigns a non-Stripe (generic) subscription plan to the workspace, optionally granting a trial period. Used for AppSumo-style lifetime deals. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -245,8 +250,9 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '201': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -354,6 +360,7 @@ class SubscriptionsApi:
     ) -> object:
         """Cancel subscription
 
+        Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -390,6 +397,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,6 +429,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Cancel subscription
 
+        Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -457,6 +466,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -488,6 +498,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Cancel subscription
 
+        Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -524,6 +535,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -616,6 +628,7 @@ class SubscriptionsApi:
     ) -> object:
         """Change subscription plan
 
+        Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -655,6 +668,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -687,6 +701,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Change subscription plan
 
+        Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -726,6 +741,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -758,6 +774,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Change subscription plan
 
+        Switches the workspace to a different Stripe plan. Optionally prorates the change and bills immediately. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -797,6 +814,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -945,6 +963,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CheckoutSubscription200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1017,6 +1036,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CheckoutSubscription200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1089,6 +1109,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CheckoutSubscription200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1197,6 +1218,7 @@ class SubscriptionsApi:
     ) -> object:
         """Create subscription
 
+        Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1236,6 +1258,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -1269,6 +1292,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Create subscription
 
+        Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1308,6 +1332,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -1341,6 +1366,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Create subscription
 
+        Manually creates a subscription record for the workspace (for external billing integrations). Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1380,6 +1406,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -1488,6 +1515,7 @@ class SubscriptionsApi:
     ) -> object:
         """Delete subscription
 
+        Removes the subscription record from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1524,6 +1552,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1555,6 +1584,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Delete subscription
 
+        Removes the subscription record from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1591,6 +1621,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1622,6 +1653,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Delete subscription
 
+        Removes the subscription record from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1658,6 +1690,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1749,6 +1782,7 @@ class SubscriptionsApi:
     ) -> Subscription:
         """Get subscription
 
+        Returns the active subscription for the workspace, or `null` if none exists. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1785,6 +1819,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1816,6 +1851,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[Subscription]:
         """Get subscription
 
+        Returns the active subscription for the workspace, or `null` if none exists. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1852,6 +1888,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1883,6 +1920,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Get subscription
 
+        Returns the active subscription for the workspace, or `null` if none exists. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1919,6 +1957,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Subscription",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2010,6 +2049,7 @@ class SubscriptionsApi:
     ) -> object:
         """Remove generic subscription
 
+        Removes the generic (non-Stripe) subscription from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2046,6 +2086,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2077,6 +2118,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Remove generic subscription
 
+        Removes the generic (non-Stripe) subscription from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2113,6 +2155,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2144,6 +2187,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Remove generic subscription
 
+        Removes the generic (non-Stripe) subscription from the workspace. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2180,6 +2224,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2271,6 +2316,7 @@ class SubscriptionsApi:
     ) -> object:
         """Resume subscription
 
+        Resumes a previously canceled subscription before it expires. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2307,6 +2353,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2338,6 +2385,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Resume subscription
 
+        Resumes a previously canceled subscription before it expires. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2374,6 +2422,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2405,6 +2454,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Resume subscription
 
+        Resumes a previously canceled subscription before it expires. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2441,6 +2491,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2533,6 +2584,7 @@ class SubscriptionsApi:
     ) -> object:
         """Update subscription
 
+        Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2572,6 +2624,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2604,6 +2657,7 @@ class SubscriptionsApi:
     ) -> ApiResponse[object]:
         """Update subscription
 
+        Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2643,6 +2697,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2675,6 +2730,7 @@ class SubscriptionsApi:
     ) -> RESTResponseType:
         """Update subscription
 
+        Updates the plan ID, status, or trial/pause dates of an existing subscription. Admin only.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2714,6 +2770,7 @@ class SubscriptionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,

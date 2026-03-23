@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.initiate_chunked_upload200_response import InitiateChunkedUpload200Response
+from postboost.models.initiate_remote_upload201_response_one_of import InitiateRemoteUpload201ResponseOneOf
 
-class TestInitiateChunkedUpload200Response(unittest.TestCase):
-    """InitiateChunkedUpload200Response unit test stubs"""
+class TestInitiateRemoteUpload201ResponseOneOf(unittest.TestCase):
+    """InitiateRemoteUpload201ResponseOneOf unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +26,25 @@ class TestInitiateChunkedUpload200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> InitiateChunkedUpload200Response:
-        """Test InitiateChunkedUpload200Response
+    def make_instance(self, include_optional) -> InitiateRemoteUpload201ResponseOneOf:
+        """Test InitiateRemoteUpload201ResponseOneOf
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `InitiateChunkedUpload200Response`
+        # uncomment below to create an instance of `InitiateRemoteUpload201ResponseOneOf`
         """
-        model = InitiateChunkedUpload200Response()
+        model = InitiateRemoteUpload201ResponseOneOf()
         if include_optional:
-            return InitiateChunkedUpload200Response(
-                upload_uuid = '',
-                chunk_size = 56,
-                total_chunks = 56
+            return InitiateRemoteUpload201ResponseOneOf(
+                download_id = ''
             )
         else:
-            return InitiateChunkedUpload200Response(
+            return InitiateRemoteUpload201ResponseOneOf(
         )
         """
 
-    def testInitiateChunkedUpload200Response(self):
-        """Test InitiateChunkedUpload200Response"""
+    def testInitiateRemoteUpload201ResponseOneOf(self):
+        """Test InitiateRemoteUpload201ResponseOneOf"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

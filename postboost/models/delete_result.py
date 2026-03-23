@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,9 +27,9 @@ class DeleteResult(BaseModel):
     """
     DeleteResult
     """ # noqa: E501
-    deleted: Optional[StrictBool] = None
-    deleted_from_app: Optional[StrictBool] = None
-    to_trash: Optional[StrictBool] = None
+    deleted: StrictBool
+    deleted_from_app: StrictBool
+    to_trash: StrictBool
     __properties: ClassVar[List[str]] = ["deleted", "deleted_from_app", "to_trash"]
 
     model_config = ConfigDict(

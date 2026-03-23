@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.upload_chunk200_response import UploadChunk200Response
+from postboost.models.initiate_chunked_upload201_response import InitiateChunkedUpload201Response
 
-class TestUploadChunk200Response(unittest.TestCase):
-    """UploadChunk200Response unit test stubs"""
+class TestInitiateChunkedUpload201Response(unittest.TestCase):
+    """InitiateChunkedUpload201Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,27 @@ class TestUploadChunk200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UploadChunk200Response:
-        """Test UploadChunk200Response
+    def make_instance(self, include_optional) -> InitiateChunkedUpload201Response:
+        """Test InitiateChunkedUpload201Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UploadChunk200Response`
+        # uncomment below to create an instance of `InitiateChunkedUpload201Response`
         """
-        model = UploadChunk200Response()
+        model = InitiateChunkedUpload201Response()
         if include_optional:
-            return UploadChunk200Response(
-                received = 56
+            return InitiateChunkedUpload201Response(
+                upload_uuid = '',
+                chunk_size = 56,
+                total_chunks = 56
             )
         else:
-            return UploadChunk200Response(
+            return InitiateChunkedUpload201Response(
         )
         """
 
-    def testUploadChunk200Response(self):
-        """Test UploadChunk200Response"""
+    def testInitiateChunkedUpload201Response(self):
+        """Test InitiateChunkedUpload201Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

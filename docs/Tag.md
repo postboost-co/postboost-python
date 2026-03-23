@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**uuid** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**hex_color** | **str** |  | [optional] 
+**id** | **int** |  | 
+**uuid** | **str** |  | 
+**name** | **str** |  | 
+**hex_color** | **str** |  | 
 
 ## Example
 

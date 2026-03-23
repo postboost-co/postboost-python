@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +27,10 @@ class Tag(BaseModel):
     """
     Tag
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    uuid: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    hex_color: Optional[StrictStr] = None
+    id: StrictInt
+    uuid: StrictStr
+    name: StrictStr
+    hex_color: StrictStr
     __properties: ClassVar[List[str]] = ["id", "uuid", "name", "hex_color"]
 
     model_config = ConfigDict(

@@ -64,6 +64,7 @@ class UsersApi:
     ) -> User:
         """Create user
 
+        Creates a new user account on the platform. Admin only.
 
         :param user_input: (required)
         :type user_input: UserInput
@@ -98,8 +99,9 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '201': "User",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -132,6 +134,7 @@ class UsersApi:
     ) -> ApiResponse[User]:
         """Create user
 
+        Creates a new user account on the platform. Admin only.
 
         :param user_input: (required)
         :type user_input: UserInput
@@ -166,8 +169,9 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '201': "User",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -200,6 +204,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Create user
 
+        Creates a new user account on the platform. Admin only.
 
         :param user_input: (required)
         :type user_input: UserInput
@@ -234,8 +239,9 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '201': "User",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -341,6 +347,7 @@ class UsersApi:
     ) -> object:
         """Delete user
 
+        Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -378,6 +385,7 @@ class UsersApi:
             '200': "object",
             '400': "DeleteUser400Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -409,6 +417,7 @@ class UsersApi:
     ) -> ApiResponse[object]:
         """Delete user
 
+        Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -446,6 +455,7 @@ class UsersApi:
             '200': "object",
             '400': "DeleteUser400Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -477,6 +487,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Delete user
 
+        Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -514,6 +525,7 @@ class UsersApi:
             '200': "object",
             '400': "DeleteUser400Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -605,6 +617,7 @@ class UsersApi:
     ) -> object:
         """Delete users (bulk)
 
+        Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
 
         :param delete_users_bulk_request: (required)
         :type delete_users_bulk_request: DeleteUsersBulkRequest
@@ -641,6 +654,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -672,6 +686,7 @@ class UsersApi:
     ) -> ApiResponse[object]:
         """Delete users (bulk)
 
+        Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
 
         :param delete_users_bulk_request: (required)
         :type delete_users_bulk_request: DeleteUsersBulkRequest
@@ -708,6 +723,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -739,6 +755,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Delete users (bulk)
 
+        Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
 
         :param delete_users_bulk_request: (required)
         :type delete_users_bulk_request: DeleteUsersBulkRequest
@@ -775,6 +792,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -879,6 +897,7 @@ class UsersApi:
     ) -> User:
         """Get user
 
+        Returns a single user account by ID. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -915,6 +934,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -947,6 +967,7 @@ class UsersApi:
     ) -> ApiResponse[User]:
         """Get user
 
+        Returns a single user account by ID. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -983,6 +1004,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1015,6 +1037,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Get user
 
+        Returns a single user account by ID. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -1051,6 +1074,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1128,6 +1152,7 @@ class UsersApi:
     def list_users(
         self,
         keyword: Annotated[Optional[StrictStr], Field(description="Search by name or email.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1143,9 +1168,12 @@ class UsersApi:
     ) -> ListUsers200Response:
         """List users
 
+        Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
 
         :param keyword: Search by name or email.
         :type keyword: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1170,6 +1198,7 @@ class UsersApi:
 
         _param = self._list_users_serialize(
             keyword=keyword,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1196,6 +1225,7 @@ class UsersApi:
     def list_users_with_http_info(
         self,
         keyword: Annotated[Optional[StrictStr], Field(description="Search by name or email.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1211,9 +1241,12 @@ class UsersApi:
     ) -> ApiResponse[ListUsers200Response]:
         """List users
 
+        Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
 
         :param keyword: Search by name or email.
         :type keyword: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1238,6 +1271,7 @@ class UsersApi:
 
         _param = self._list_users_serialize(
             keyword=keyword,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1264,6 +1298,7 @@ class UsersApi:
     def list_users_without_preload_content(
         self,
         keyword: Annotated[Optional[StrictStr], Field(description="Search by name or email.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1279,9 +1314,12 @@ class UsersApi:
     ) -> RESTResponseType:
         """List users
 
+        Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
 
         :param keyword: Search by name or email.
         :type keyword: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1306,6 +1344,7 @@ class UsersApi:
 
         _param = self._list_users_serialize(
             keyword=keyword,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1327,6 +1366,7 @@ class UsersApi:
     def _list_users_serialize(
         self,
         keyword,
+        page,
         _request_auth,
         _content_type,
         _headers,
@@ -1352,6 +1392,10 @@ class UsersApi:
         if keyword is not None:
             
             _query_params.append(('keyword', keyword))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
             
         # process the header parameters
         # process the form parameters
@@ -1410,6 +1454,7 @@ class UsersApi:
     ) -> object:
         """Update user
 
+        Updates a user's name, email, admin status, or password. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -1449,6 +1494,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -1482,6 +1528,7 @@ class UsersApi:
     ) -> ApiResponse[object]:
         """Update user
 
+        Updates a user's name, email, admin status, or password. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -1521,6 +1568,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -1554,6 +1602,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Update user
 
+        Updates a user's name, email, admin status, or password. Admin only.
 
         :param user_id: ID of the user. (required)
         :type user_id: int
@@ -1593,6 +1642,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(

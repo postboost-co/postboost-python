@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from postboost.models.delete_receipts_bulk_request import DeleteReceiptsBulkRequest
@@ -64,6 +64,7 @@ class ReceiptsApi:
     ) -> Receipt:
         """Create receipt
 
+        Creates a billing receipt record for a workspace. Admin only.
 
         :param receipt_input: (required)
         :type receipt_input: ReceiptInput
@@ -98,8 +99,9 @@ class ReceiptsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Receipt",
+            '201': "Receipt",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -132,6 +134,7 @@ class ReceiptsApi:
     ) -> ApiResponse[Receipt]:
         """Create receipt
 
+        Creates a billing receipt record for a workspace. Admin only.
 
         :param receipt_input: (required)
         :type receipt_input: ReceiptInput
@@ -166,8 +169,9 @@ class ReceiptsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Receipt",
+            '201': "Receipt",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -200,6 +204,7 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """Create receipt
 
+        Creates a billing receipt record for a workspace. Admin only.
 
         :param receipt_input: (required)
         :type receipt_input: ReceiptInput
@@ -234,8 +239,9 @@ class ReceiptsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Receipt",
+            '201': "Receipt",
             '401': "object",
+            '403': "object",
             '422': "object",
         }
         response_data = self.api_client.call_api(
@@ -341,6 +347,7 @@ class ReceiptsApi:
     ) -> object:
         """Delete receipt
 
+        Permanently deletes a single receipt. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -377,6 +384,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -409,6 +417,7 @@ class ReceiptsApi:
     ) -> ApiResponse[object]:
         """Delete receipt
 
+        Permanently deletes a single receipt. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -445,6 +454,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -477,6 +487,7 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """Delete receipt
 
+        Permanently deletes a single receipt. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -513,6 +524,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -605,6 +617,7 @@ class ReceiptsApi:
     ) -> object:
         """Delete receipts (bulk)
 
+        Permanently deletes one or more receipt records. Admin only.
 
         :param delete_receipts_bulk_request: (required)
         :type delete_receipts_bulk_request: DeleteReceiptsBulkRequest
@@ -641,6 +654,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -672,6 +686,7 @@ class ReceiptsApi:
     ) -> ApiResponse[object]:
         """Delete receipts (bulk)
 
+        Permanently deletes one or more receipt records. Admin only.
 
         :param delete_receipts_bulk_request: (required)
         :type delete_receipts_bulk_request: DeleteReceiptsBulkRequest
@@ -708,6 +723,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -739,6 +755,7 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """Delete receipts (bulk)
 
+        Permanently deletes one or more receipt records. Admin only.
 
         :param delete_receipts_bulk_request: (required)
         :type delete_receipts_bulk_request: DeleteReceiptsBulkRequest
@@ -775,6 +792,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -879,6 +897,7 @@ class ReceiptsApi:
     ) -> Receipt:
         """Get receipt
 
+        Returns a single receipt by UUID. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -915,6 +934,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receipt",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -947,6 +967,7 @@ class ReceiptsApi:
     ) -> ApiResponse[Receipt]:
         """Get receipt
 
+        Returns a single receipt by UUID. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -983,6 +1004,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receipt",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1015,6 +1037,7 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """Get receipt
 
+        Returns a single receipt by UUID. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -1051,6 +1074,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receipt",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1129,6 +1153,7 @@ class ReceiptsApi:
         self,
         workspace_uuid: Optional[StrictStr] = None,
         invoice_number: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1144,11 +1169,14 @@ class ReceiptsApi:
     ) -> ListReceipts200Response:
         """List receipts
 
+        Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
 
         :param workspace_uuid:
         :type workspace_uuid: str
         :param invoice_number:
         :type invoice_number: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1174,6 +1202,7 @@ class ReceiptsApi:
         _param = self._list_receipts_serialize(
             workspace_uuid=workspace_uuid,
             invoice_number=invoice_number,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1183,6 +1212,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListReceipts200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1200,6 +1230,7 @@ class ReceiptsApi:
         self,
         workspace_uuid: Optional[StrictStr] = None,
         invoice_number: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1215,11 +1246,14 @@ class ReceiptsApi:
     ) -> ApiResponse[ListReceipts200Response]:
         """List receipts
 
+        Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
 
         :param workspace_uuid:
         :type workspace_uuid: str
         :param invoice_number:
         :type invoice_number: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1245,6 +1279,7 @@ class ReceiptsApi:
         _param = self._list_receipts_serialize(
             workspace_uuid=workspace_uuid,
             invoice_number=invoice_number,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1254,6 +1289,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListReceipts200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1271,6 +1307,7 @@ class ReceiptsApi:
         self,
         workspace_uuid: Optional[StrictStr] = None,
         invoice_number: Optional[StrictStr] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number (15 items per page).")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1286,11 +1323,14 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """List receipts
 
+        Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
 
         :param workspace_uuid:
         :type workspace_uuid: str
         :param invoice_number:
         :type invoice_number: str
+        :param page: Page number (15 items per page).
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1316,6 +1356,7 @@ class ReceiptsApi:
         _param = self._list_receipts_serialize(
             workspace_uuid=workspace_uuid,
             invoice_number=invoice_number,
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1325,6 +1366,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListReceipts200Response",
             '401': "object",
+            '403': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1337,6 +1379,7 @@ class ReceiptsApi:
         self,
         workspace_uuid,
         invoice_number,
+        page,
         _request_auth,
         _content_type,
         _headers,
@@ -1366,6 +1409,10 @@ class ReceiptsApi:
         if invoice_number is not None:
             
             _query_params.append(('invoice_number', invoice_number))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
             
         # process the header parameters
         # process the form parameters
@@ -1424,6 +1471,7 @@ class ReceiptsApi:
     ) -> object:
         """Update receipt
 
+        Updates a receipt's transaction details, amount, or payment date. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -1463,6 +1511,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1496,6 +1545,7 @@ class ReceiptsApi:
     ) -> ApiResponse[object]:
         """Update receipt
 
+        Updates a receipt's transaction details, amount, or payment date. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -1535,6 +1585,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(
@@ -1568,6 +1619,7 @@ class ReceiptsApi:
     ) -> RESTResponseType:
         """Update receipt
 
+        Updates a receipt's transaction details, amount, or payment date. Admin only.
 
         :param receipt_uuid: UUID of the receipt. (required)
         :type receipt_uuid: str
@@ -1607,6 +1659,7 @@ class ReceiptsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '401': "object",
+            '403': "object",
             '404': "object",
         }
         response_data = self.api_client.call_api(

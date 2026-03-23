@@ -47,6 +47,11 @@ class TestSubscription(unittest.TestCase):
             )
         else:
             return Subscription(
+                name = '',
+                platform_subscription_id = '',
+                platform_plan_id = '',
+                status = 'active',
+                recurring = True,
         )
         """
 

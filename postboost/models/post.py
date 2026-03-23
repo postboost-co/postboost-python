@@ -32,16 +32,16 @@ class Post(BaseModel):
     """
     Post
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    uuid: Optional[StrictStr] = None
-    status: Optional[PostStatus] = None
-    accounts: Optional[List[Account]] = None
-    versions: Optional[List[PostVersion]] = None
-    tags: Optional[List[Tag]] = None
+    id: StrictInt
+    uuid: StrictStr
+    status: PostStatus
+    accounts: List[Account]
+    versions: List[PostVersion]
+    tags: List[Tag]
     scheduled_at: Optional[datetime] = None
     published_at: Optional[datetime] = None
-    created_at: Optional[datetime] = None
-    trashed: Optional[StrictBool] = None
+    created_at: datetime
+    trashed: StrictBool
     __properties: ClassVar[List[str]] = ["id", "uuid", "status", "accounts", "versions", "tags", "scheduled_at", "published_at", "created_at", "trashed"]
 
     model_config = ConfigDict(

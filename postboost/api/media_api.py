@@ -22,14 +22,14 @@ from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from postboost.models.delete_media_bulk_request import DeleteMediaBulkRequest
 from postboost.models.get_remote_upload_status200_response import GetRemoteUploadStatus200Response
-from postboost.models.initiate_chunked_upload200_response import InitiateChunkedUpload200Response
+from postboost.models.initiate_chunked_upload201_response import InitiateChunkedUpload201Response
 from postboost.models.initiate_chunked_upload_request import InitiateChunkedUploadRequest
-from postboost.models.initiate_remote_upload200_response import InitiateRemoteUpload200Response
+from postboost.models.initiate_remote_upload201_response import InitiateRemoteUpload201Response
 from postboost.models.initiate_remote_upload_request import InitiateRemoteUploadRequest
 from postboost.models.list_media200_response import ListMedia200Response
 from postboost.models.media import Media
 from postboost.models.update_media_request import UpdateMediaRequest
-from postboost.models.upload_chunk200_response import UploadChunk200Response
+from postboost.models.upload_chunk201_response import UploadChunk201Response
 from postboost.models.object import object
 
 from postboost.api_client import ApiClient, RequestSerialized
@@ -387,7 +387,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }
@@ -460,7 +460,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }
@@ -533,7 +533,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }
@@ -1481,7 +1481,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InitiateChunkedUpload200Response:
+    ) -> InitiateChunkedUpload201Response:
         """Initiate chunked upload
 
         Start a chunked upload session for large files. Returns an `upload_uuid`, `chunk_size`, and `total_chunks` to use for subsequent chunk requests. 
@@ -1522,7 +1522,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateChunkedUpload200Response",
+            '201': "InitiateChunkedUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -1554,7 +1554,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InitiateChunkedUpload200Response]:
+    ) -> ApiResponse[InitiateChunkedUpload201Response]:
         """Initiate chunked upload
 
         Start a chunked upload session for large files. Returns an `upload_uuid`, `chunk_size`, and `total_chunks` to use for subsequent chunk requests. 
@@ -1595,7 +1595,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateChunkedUpload200Response",
+            '201': "InitiateChunkedUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -1668,7 +1668,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateChunkedUpload200Response",
+            '201': "InitiateChunkedUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -1776,7 +1776,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InitiateRemoteUpload200Response:
+    ) -> InitiateRemoteUpload201Response:
         """Initiate remote upload
 
         Download a file from a remote URL into the media library. For small files the media object is returned immediately. For large files a `download_id` is returned — poll the status endpoint. 
@@ -1817,7 +1817,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateRemoteUpload200Response",
+            '201': "InitiateRemoteUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -1849,7 +1849,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InitiateRemoteUpload200Response]:
+    ) -> ApiResponse[InitiateRemoteUpload201Response]:
         """Initiate remote upload
 
         Download a file from a remote URL into the media library. For small files the media object is returned immediately. For large files a `download_id` is returned — poll the status endpoint. 
@@ -1890,7 +1890,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateRemoteUpload200Response",
+            '201': "InitiateRemoteUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -1963,7 +1963,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "InitiateRemoteUpload200Response",
+            '201': "InitiateRemoteUpload201Response",
             '401': "object",
             '422': "object",
         }
@@ -2664,7 +2664,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UploadChunk200Response:
+    ) -> UploadChunk201Response:
         """Upload a chunk
 
         Upload a single chunk of a chunked upload session.
@@ -2711,7 +2711,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UploadChunk200Response",
+            '201': "UploadChunk201Response",
             '401': "object",
             '422': "object",
         }
@@ -2745,7 +2745,7 @@ class MediaApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UploadChunk200Response]:
+    ) -> ApiResponse[UploadChunk201Response]:
         """Upload a chunk
 
         Upload a single chunk of a chunked upload session.
@@ -2792,7 +2792,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UploadChunk200Response",
+            '201': "UploadChunk201Response",
             '401': "object",
             '422': "object",
         }
@@ -2873,7 +2873,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UploadChunk200Response",
+            '201': "UploadChunk201Response",
             '401': "object",
             '422': "object",
         }
@@ -3032,7 +3032,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }
@@ -3109,7 +3109,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }
@@ -3186,7 +3186,7 @@ class MediaApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Media",
+            '201': "Media",
             '401': "object",
             '422': "object",
         }

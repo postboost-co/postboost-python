@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.initiate_remote_upload200_response_one_of import InitiateRemoteUpload200ResponseOneOf
+from postboost.models.initiate_remote_upload201_response import InitiateRemoteUpload201Response
 
-class TestInitiateRemoteUpload200ResponseOneOf(unittest.TestCase):
-    """InitiateRemoteUpload200ResponseOneOf unit test stubs"""
+class TestInitiateRemoteUpload201Response(unittest.TestCase):
+    """InitiateRemoteUpload201Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,42 @@ class TestInitiateRemoteUpload200ResponseOneOf(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> InitiateRemoteUpload200ResponseOneOf:
-        """Test InitiateRemoteUpload200ResponseOneOf
+    def make_instance(self, include_optional) -> InitiateRemoteUpload201Response:
+        """Test InitiateRemoteUpload201Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `InitiateRemoteUpload200ResponseOneOf`
+        # uncomment below to create an instance of `InitiateRemoteUpload201Response`
         """
-        model = InitiateRemoteUpload200ResponseOneOf()
+        model = InitiateRemoteUpload201Response()
         if include_optional:
-            return InitiateRemoteUpload200ResponseOneOf(
+            return InitiateRemoteUpload201Response(
+                id = 56,
+                uuid = '',
+                name = '',
+                mime_type = 'image/jpeg',
+                type = 'image',
+                url = '',
+                thumb_url = '',
+                is_video = True,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 download_id = ''
             )
         else:
-            return InitiateRemoteUpload200ResponseOneOf(
+            return InitiateRemoteUpload201Response(
+                id = 56,
+                uuid = '',
+                name = '',
+                mime_type = 'image/jpeg',
+                type = 'image',
+                url = '',
+                is_video = True,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 
-    def testInitiateRemoteUpload200ResponseOneOf(self):
-        """Test InitiateRemoteUpload200ResponseOneOf"""
+    def testInitiateRemoteUpload201Response(self):
+        """Test InitiateRemoteUpload201Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

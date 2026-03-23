@@ -20,6 +20,8 @@ Method | HTTP request | Description
 
 Add user to workspace
 
+Adds an existing user to the workspace with a specified role. Admin only.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -90,8 +92,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**201** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -171,7 +174,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created workspace |  -  |
+**201** | Created workspace |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
 **422** |  |  -  |
@@ -182,6 +185,8 @@ Name | Type | Description  | Notes
 > object delete_workspace(workspace_uuid)
 
 Delete workspace
+
+Permanently deletes a single workspace and all its associated data. Admin only.
 
 ### Example
 
@@ -252,6 +257,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -260,6 +266,8 @@ Name | Type | Description  | Notes
 > object delete_workspaces_bulk(delete_workspaces_bulk_request)
 
 Delete workspaces (bulk)
+
+Permanently deletes one or more workspaces and all their associated data. Admin only.
 
 ### Example
 
@@ -340,6 +348,8 @@ Name | Type | Description  | Notes
 
 Get workspace
 
+Returns a single workspace by UUID including its subscription status. Admin only.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -409,12 +419,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Workspace details |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_workspaces**
-> ListWorkspaces200Response list_workspaces(keyword=keyword, subscription_status=subscription_status, access_status=access_status)
+> ListWorkspaces200Response list_workspaces(keyword=keyword, subscription_status=subscription_status, access_status=access_status, page=page)
 
 List workspaces
 
@@ -453,10 +464,11 @@ with postboost.ApiClient(configuration) as api_client:
     keyword = 'keyword_example' # str |  (optional)
     subscription_status = 'subscription_status_example' # str |  (optional)
     access_status = 'access_status_example' # str |  (optional)
+    page = 1 # int | Page number (15 items per page). (optional) (default to 1)
 
     try:
         # List workspaces
-        api_response = api_instance.list_workspaces(keyword=keyword, subscription_status=subscription_status, access_status=access_status)
+        api_response = api_instance.list_workspaces(keyword=keyword, subscription_status=subscription_status, access_status=access_status, page=page)
         print("The response of WorkspacesApi->list_workspaces:\n")
         pprint(api_response)
     except Exception as e:
@@ -473,6 +485,7 @@ Name | Type | Description  | Notes
  **keyword** | **str**|  | [optional] 
  **subscription_status** | **str**|  | [optional] 
  **access_status** | **str**|  | [optional] 
+ **page** | **int**| Page number (15 items per page). | [optional] [default to 1]
 
 ### Return type
 
@@ -501,6 +514,8 @@ Name | Type | Description  | Notes
 > object remove_user_from_workspace(workspace_uuid, remove_user_from_workspace_request)
 
 Remove user from workspace
+
+Removes a user's access to the workspace. The user account is not deleted. Admin only.
 
 ### Example
 
@@ -574,6 +589,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -581,6 +597,8 @@ Name | Type | Description  | Notes
 > object update_workspace(workspace_uuid, workspace_input)
 
 Update workspace
+
+Updates a workspace's name, color, or access status. Admin only.
 
 ### Example
 
@@ -654,6 +672,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -662,6 +681,8 @@ Name | Type | Description  | Notes
 > object update_workspace_user(workspace_uuid, workspace_user_input)
 
 Update user role in workspace
+
+Changes a user's role or permissions within the workspace. Admin only.
 
 ### Example
 
@@ -735,6 +756,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

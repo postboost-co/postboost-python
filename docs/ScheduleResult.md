@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | [optional] 
+**success** | **bool** |  | 
 **scheduled_at** | **datetime** |  | [optional] 
 
 ## Example

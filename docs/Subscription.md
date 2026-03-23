@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**platform_subscription_id** | **str** |  | [optional] 
-**platform_plan_id** | **str** |  | [optional] 
-**status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | [optional] 
-**recurring** | **bool** |  | [optional] 
+**name** | **str** |  | 
+**platform_subscription_id** | **str** |  | 
+**platform_plan_id** | **str** |  | 
+**status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | 
+**recurring** | **bool** |  | 
 **trial_ends_at** | **datetime** |  | [optional] 
 **paused_from** | **datetime** |  | [optional] 
 **ends_at** | **datetime** |  | [optional] 

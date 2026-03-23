@@ -18,24 +18,24 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from postboost.models.initiate_remote_upload200_response_one_of import InitiateRemoteUpload200ResponseOneOf
+from postboost.models.initiate_remote_upload201_response_one_of import InitiateRemoteUpload201ResponseOneOf
 from postboost.models.media import Media
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-INITIATEREMOTEUPLOAD200RESPONSE_ONE_OF_SCHEMAS = ["InitiateRemoteUpload200ResponseOneOf", "Media"]
+INITIATEREMOTEUPLOAD201RESPONSE_ONE_OF_SCHEMAS = ["InitiateRemoteUpload201ResponseOneOf", "Media"]
 
-class InitiateRemoteUpload200Response(BaseModel):
+class InitiateRemoteUpload201Response(BaseModel):
     """
-    InitiateRemoteUpload200Response
+    InitiateRemoteUpload201Response
     """
     # data type: Media
     oneof_schema_1_validator: Optional[Media] = None
-    # data type: InitiateRemoteUpload200ResponseOneOf
-    oneof_schema_2_validator: Optional[InitiateRemoteUpload200ResponseOneOf] = None
-    actual_instance: Optional[Union[InitiateRemoteUpload200ResponseOneOf, Media]] = None
-    one_of_schemas: Set[str] = { "InitiateRemoteUpload200ResponseOneOf", "Media" }
+    # data type: InitiateRemoteUpload201ResponseOneOf
+    oneof_schema_2_validator: Optional[InitiateRemoteUpload201ResponseOneOf] = None
+    actual_instance: Optional[Union[InitiateRemoteUpload201ResponseOneOf, Media]] = None
+    one_of_schemas: Set[str] = { "InitiateRemoteUpload201ResponseOneOf", "Media" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -55,7 +55,7 @@ class InitiateRemoteUpload200Response(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = InitiateRemoteUpload200Response.model_construct()
+        instance = InitiateRemoteUpload201Response.model_construct()
         error_messages = []
         match = 0
         # validate data type: Media
@@ -63,17 +63,17 @@ class InitiateRemoteUpload200Response(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `Media`")
         else:
             match += 1
-        # validate data type: InitiateRemoteUpload200ResponseOneOf
-        if not isinstance(v, InitiateRemoteUpload200ResponseOneOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `InitiateRemoteUpload200ResponseOneOf`")
+        # validate data type: InitiateRemoteUpload201ResponseOneOf
+        if not isinstance(v, InitiateRemoteUpload201ResponseOneOf):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `InitiateRemoteUpload201ResponseOneOf`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in InitiateRemoteUpload200Response with oneOf schemas: InitiateRemoteUpload200ResponseOneOf, Media. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in InitiateRemoteUpload201Response with oneOf schemas: InitiateRemoteUpload201ResponseOneOf, Media. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in InitiateRemoteUpload200Response with oneOf schemas: InitiateRemoteUpload200ResponseOneOf, Media. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in InitiateRemoteUpload201Response with oneOf schemas: InitiateRemoteUpload201ResponseOneOf, Media. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -94,19 +94,19 @@ class InitiateRemoteUpload200Response(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into InitiateRemoteUpload200ResponseOneOf
+        # deserialize data into InitiateRemoteUpload201ResponseOneOf
         try:
-            instance.actual_instance = InitiateRemoteUpload200ResponseOneOf.from_json(json_str)
+            instance.actual_instance = InitiateRemoteUpload201ResponseOneOf.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into InitiateRemoteUpload200Response with oneOf schemas: InitiateRemoteUpload200ResponseOneOf, Media. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into InitiateRemoteUpload201Response with oneOf schemas: InitiateRemoteUpload201ResponseOneOf, Media. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into InitiateRemoteUpload200Response with oneOf schemas: InitiateRemoteUpload200ResponseOneOf, Media. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into InitiateRemoteUpload201Response with oneOf schemas: InitiateRemoteUpload201ResponseOneOf, Media. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -120,7 +120,7 @@ class InitiateRemoteUpload200Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], InitiateRemoteUpload200ResponseOneOf, Media]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], InitiateRemoteUpload201ResponseOneOf, Media]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

@@ -42,6 +42,9 @@ class TestDeleteResult(unittest.TestCase):
             )
         else:
             return DeleteResult(
+                deleted = True,
+                deleted_from_app = True,
+                to_trash = True,
         )
         """
 

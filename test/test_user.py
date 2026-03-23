@@ -45,6 +45,11 @@ class TestUser(unittest.TestCase):
             )
         else:
             return User(
+                id = 56,
+                name = '',
+                email = '',
+                is_admin = True,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

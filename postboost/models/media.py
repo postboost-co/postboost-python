@@ -28,23 +28,20 @@ class Media(BaseModel):
     """
     Media
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    uuid: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    mime_type: Optional[StrictStr] = None
-    type: Optional[StrictStr] = None
-    url: Optional[StrictStr] = None
+    id: StrictInt
+    uuid: StrictStr
+    name: StrictStr
+    mime_type: StrictStr
+    type: StrictStr
+    url: StrictStr
     thumb_url: Optional[StrictStr] = None
-    is_video: Optional[StrictBool] = None
-    created_at: Optional[datetime] = None
+    is_video: StrictBool
+    created_at: datetime
     __properties: ClassVar[List[str]] = ["id", "uuid", "name", "mime_type", "type", "url", "thumb_url", "is_video", "created_at"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['image', 'video', 'gif']):
             raise ValueError("must be one of enum values ('image', 'video', 'gif')")
         return value

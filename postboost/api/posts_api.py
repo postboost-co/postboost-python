@@ -106,7 +106,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ScheduleResult",
+            '201': "ScheduleResult",
             '401': "object",
             '404': "object",
         }
@@ -179,7 +179,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ScheduleResult",
+            '201': "ScheduleResult",
             '401': "object",
             '404': "object",
         }
@@ -252,7 +252,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ScheduleResult",
+            '201': "ScheduleResult",
             '401': "object",
             '404': "object",
         }
@@ -673,7 +673,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Post",
+            '201': "Post",
             '401': "object",
             '422': "object",
         }
@@ -746,7 +746,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Post",
+            '201': "Post",
             '401': "object",
             '422': "object",
         }
@@ -819,7 +819,7 @@ class PostsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Post",
+            '201': "Post",
             '401': "object",
             '422': "object",
         }
@@ -931,6 +931,7 @@ class PostsApi:
     ) -> DeleteResult:
         """Delete post
 
+        Deletes a post. Use `delete_mode` to control whether to also remove the published content from social platforms.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1007,6 +1008,7 @@ class PostsApi:
     ) -> ApiResponse[DeleteResult]:
         """Delete post
 
+        Deletes a post. Use `delete_mode` to control whether to also remove the published content from social platforms.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1083,6 +1085,7 @@ class PostsApi:
     ) -> RESTResponseType:
         """Delete post
 
+        Deletes a post. Use `delete_mode` to control whether to also remove the published content from social platforms.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1529,6 +1532,7 @@ class PostsApi:
     ) -> Post:
         """Get post
 
+        Returns a single post with all its versions and associated accounts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1601,6 +1605,7 @@ class PostsApi:
     ) -> ApiResponse[Post]:
         """Get post
 
+        Returns a single post with all its versions and associated accounts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -1673,6 +1678,7 @@ class PostsApi:
     ) -> RESTResponseType:
         """Get post
 
+        Returns a single post with all its versions and associated accounts.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2400,6 +2406,7 @@ class PostsApi:
     ) -> object:
         """Update post
 
+        Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2477,6 +2484,7 @@ class PostsApi:
     ) -> ApiResponse[object]:
         """Update post
 
+        Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str
@@ -2554,6 +2562,7 @@ class PostsApi:
     ) -> RESTResponseType:
         """Update post
 
+        Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
 
         :param workspace_uuid: UUID of the workspace. (required)
         :type workspace_uuid: str

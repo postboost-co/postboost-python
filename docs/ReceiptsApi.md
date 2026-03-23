@@ -17,6 +17,8 @@ Method | HTTP request | Description
 
 Create receipt
 
+Creates a billing receipt record for a workspace. Admin only.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -85,8 +87,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created receipt |  -  |
+**201** | Created receipt |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -95,6 +98,8 @@ Name | Type | Description  | Notes
 > object delete_receipt(receipt_uuid)
 
 Delete receipt
+
+Permanently deletes a single receipt. Admin only.
 
 ### Example
 
@@ -165,6 +170,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -173,6 +179,8 @@ Name | Type | Description  | Notes
 > object delete_receipts_bulk(delete_receipts_bulk_request)
 
 Delete receipts (bulk)
+
+Permanently deletes one or more receipt records. Admin only.
 
 ### Example
 
@@ -244,6 +252,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -251,6 +260,8 @@ Name | Type | Description  | Notes
 > Receipt get_receipt(receipt_uuid)
 
 Get receipt
+
+Returns a single receipt by UUID. Admin only.
 
 ### Example
 
@@ -321,14 +332,17 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Receipt details |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_receipts**
-> ListReceipts200Response list_receipts(workspace_uuid=workspace_uuid, invoice_number=invoice_number)
+> ListReceipts200Response list_receipts(workspace_uuid=workspace_uuid, invoice_number=invoice_number, page=page)
 
 List receipts
+
+Returns a paginated list of billing receipts. Filter by workspace UUID or invoice number. Admin only.
 
 ### Example
 
@@ -362,10 +376,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.ReceiptsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str |  (optional)
     invoice_number = 'invoice_number_example' # str |  (optional)
+    page = 1 # int | Page number (15 items per page). (optional) (default to 1)
 
     try:
         # List receipts
-        api_response = api_instance.list_receipts(workspace_uuid=workspace_uuid, invoice_number=invoice_number)
+        api_response = api_instance.list_receipts(workspace_uuid=workspace_uuid, invoice_number=invoice_number, page=page)
         print("The response of ReceiptsApi->list_receipts:\n")
         pprint(api_response)
     except Exception as e:
@@ -381,6 +396,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**|  | [optional] 
  **invoice_number** | **str**|  | [optional] 
+ **page** | **int**| Page number (15 items per page). | [optional] [default to 1]
 
 ### Return type
 
@@ -401,6 +417,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Paginated list of receipts |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -408,6 +425,8 @@ Name | Type | Description  | Notes
 > object update_receipt(receipt_uuid, receipt_update_input)
 
 Update receipt
+
+Updates a receipt's transaction details, amount, or payment date. Admin only.
 
 ### Example
 
@@ -481,6 +500,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

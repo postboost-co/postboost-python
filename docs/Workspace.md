@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**hex_color** | **str** |  | [optional] 
+**uuid** | **str** |  | 
+**name** | **str** |  | 
+**hex_color** | **str** |  | 
 **owner** | [**User**](User.md) |  | [optional] 
-**access_status** | **str** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**access_status** | **str** |  | 
+**created_at** | **datetime** |  | 
 
 ## Example
 

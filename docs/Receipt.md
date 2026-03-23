@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | **str** |  | [optional] 
-**transaction_id** | **str** |  | [optional] 
-**invoice_number** | **str** |  | [optional] 
-**amount** | **float** |  | [optional] 
-**tax** | **float** |  | [optional] 
-**currency** | **str** |  | [optional] 
+**uuid** | **str** |  | 
+**transaction_id** | **str** |  | 
+**invoice_number** | **str** |  | 
+**amount** | **float** |  | 
+**tax** | **float** |  | 
+**currency** | **str** |  | 
 **receipt_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**paid_at** | **datetime** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**paid_at** | **datetime** |  | 
+**created_at** | **datetime** |  | 
 
 ## Example
 

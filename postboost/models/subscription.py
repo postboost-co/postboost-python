@@ -29,11 +29,11 @@ class Subscription(BaseModel):
     """
     Subscription
     """ # noqa: E501
-    name: Optional[StrictStr] = None
-    platform_subscription_id: Optional[StrictStr] = None
-    platform_plan_id: Optional[StrictStr] = None
-    status: Optional[SubscriptionStatus] = None
-    recurring: Optional[StrictBool] = None
+    name: StrictStr
+    platform_subscription_id: StrictStr
+    platform_plan_id: StrictStr
+    status: SubscriptionStatus
+    recurring: StrictBool
     trial_ends_at: Optional[datetime] = None
     paused_from: Optional[datetime] = None
     ends_at: Optional[datetime] = None

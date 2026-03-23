@@ -51,6 +51,11 @@ class TestWorkspace(unittest.TestCase):
             )
         else:
             return Workspace(
+                uuid = '',
+                name = '',
+                hex_color = '',
+                access_status = 'subscription',
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

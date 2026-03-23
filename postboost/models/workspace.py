@@ -29,20 +29,17 @@ class Workspace(BaseModel):
     """
     Workspace
     """ # noqa: E501
-    uuid: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    hex_color: Optional[StrictStr] = None
+    uuid: StrictStr
+    name: StrictStr
+    hex_color: StrictStr
     owner: Optional[User] = None
-    access_status: Optional[StrictStr] = None
-    created_at: Optional[datetime] = None
+    access_status: StrictStr
+    created_at: datetime
     __properties: ClassVar[List[str]] = ["uuid", "name", "hex_color", "owner", "access_status", "created_at"]
 
     @field_validator('access_status')
     def access_status_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['subscription', 'unlimited', 'locked']):
             raise ValueError("must be one of enum values ('subscription', 'unlimited', 'locked')")
         return value

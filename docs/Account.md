@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**uuid** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**username** | **str** |  | [optional] 
+**id** | **int** |  | 
+**uuid** | **str** |  | 
+**name** | **str** |  | 
+**username** | **str** |  | 
 **image** | **str** |  | [optional] 
-**provider** | **str** |  | [optional] 
-**data** | **object** | Provider-specific metadata. | [optional] 
-**authorized** | **bool** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**provider** | **str** |  | 
+**data** | **object** | Provider-specific metadata. | 
+**authorized** | **bool** |  | 
+**created_at** | **datetime** |  | 
 
 ## Example
 

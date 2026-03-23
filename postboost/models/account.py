@@ -28,23 +28,20 @@ class Account(BaseModel):
     """
     Account
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    uuid: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    username: Optional[StrictStr] = None
+    id: StrictInt
+    uuid: StrictStr
+    name: StrictStr
+    username: StrictStr
     image: Optional[StrictStr] = None
-    provider: Optional[StrictStr] = None
-    data: Optional[Dict[str, Any]] = Field(default=None, description="Provider-specific metadata.")
-    authorized: Optional[StrictBool] = None
-    created_at: Optional[datetime] = None
+    provider: StrictStr
+    data: Dict[str, Any] = Field(description="Provider-specific metadata.")
+    authorized: StrictBool
+    created_at: datetime
     __properties: ClassVar[List[str]] = ["id", "uuid", "name", "username", "image", "provider", "data", "authorized", "created_at"]
 
     @field_validator('provider')
     def provider_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['instagram', 'tiktok', 'pinterest', 'twitter', 'linkedin', 'facebook_page', 'youtube', 'mastodon']):
             raise ValueError("must be one of enum values ('instagram', 'tiktok', 'pinterest', 'twitter', 'linkedin', 'facebook_page', 'youtube', 'mastodon')")
         return value

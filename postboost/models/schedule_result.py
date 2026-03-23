@@ -28,7 +28,7 @@ class ScheduleResult(BaseModel):
     """
     ScheduleResult
     """ # noqa: E501
-    success: Optional[StrictBool] = None
+    success: StrictBool
     scheduled_at: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["success", "scheduled_at"]
 

@@ -28,12 +28,12 @@ class User(BaseModel):
     """
     User
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
-    is_admin: Optional[StrictBool] = None
+    id: StrictInt
+    name: StrictStr
+    email: StrictStr
+    is_admin: StrictBool
     email_verified_at: Optional[datetime] = None
-    created_at: Optional[datetime] = None
+    created_at: datetime
     __properties: ClassVar[List[str]] = ["id", "name", "email", "is_admin", "email_verified_at", "created_at"]
 
     model_config = ConfigDict(

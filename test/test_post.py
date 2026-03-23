@@ -82,6 +82,47 @@ class TestPost(unittest.TestCase):
             )
         else:
             return Post(
+                id = 56,
+                uuid = '',
+                status = 'draft',
+                accounts = [
+                    postboost.models.account.Account(
+                        id = 56, 
+                        uuid = '', 
+                        name = 'My Instagram', 
+                        username = 'myhandle', 
+                        image = '', 
+                        provider = 'instagram', 
+                        data = postboost.models.data.data(), 
+                        authorized = True, 
+                        created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ],
+                versions = [
+                    postboost.models.post_version.PostVersion(
+                        account_id = 56, 
+                        is_original = True, 
+                        content = [
+                            postboost.models.post_content.PostContent(
+                                body = '', 
+                                url = '', 
+                                media = [
+                                    56
+                                    ], 
+                                video_thumbs = [
+                                    None
+                                    ], )
+                            ], 
+                        options = postboost.models.options.options(), )
+                    ],
+                tags = [
+                    postboost.models.tag.Tag(
+                        id = 56, 
+                        uuid = '', 
+                        name = 'Campaign 2025', 
+                        hex_color = '#3B82F6', )
+                    ],
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                trashed = True,
         )
         """
 

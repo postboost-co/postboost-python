@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.initiate_remote_upload200_response import InitiateRemoteUpload200Response
+from postboost.models.upload_chunk201_response import UploadChunk201Response
 
-class TestInitiateRemoteUpload200Response(unittest.TestCase):
-    """InitiateRemoteUpload200Response unit test stubs"""
+class TestUploadChunk201Response(unittest.TestCase):
+    """UploadChunk201Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,34 +26,25 @@ class TestInitiateRemoteUpload200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> InitiateRemoteUpload200Response:
-        """Test InitiateRemoteUpload200Response
+    def make_instance(self, include_optional) -> UploadChunk201Response:
+        """Test UploadChunk201Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `InitiateRemoteUpload200Response`
+        # uncomment below to create an instance of `UploadChunk201Response`
         """
-        model = InitiateRemoteUpload200Response()
+        model = UploadChunk201Response()
         if include_optional:
-            return InitiateRemoteUpload200Response(
-                id = 56,
-                uuid = '',
-                name = '',
-                mime_type = 'image/jpeg',
-                type = 'image',
-                url = '',
-                thumb_url = '',
-                is_video = True,
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                download_id = ''
+            return UploadChunk201Response(
+                received = 56
             )
         else:
-            return InitiateRemoteUpload200Response(
+            return UploadChunk201Response(
         )
         """
 
-    def testInitiateRemoteUpload200Response(self):
-        """Test InitiateRemoteUpload200Response"""
+    def testUploadChunk201Response(self):
+        """Test UploadChunk201Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

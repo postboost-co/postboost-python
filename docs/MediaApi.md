@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Completed media object |  -  |
+**201** | Completed media object |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **initiate_chunked_upload**
-> InitiateChunkedUpload200Response initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+> InitiateChunkedUpload201Response initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
 
 Initiate chunked upload
 
@@ -435,7 +435,7 @@ Start a chunked upload session for large files. Returns an `upload_uuid`, `chunk
 
 ```python
 import postboost
-from postboost.models.initiate_chunked_upload200_response import InitiateChunkedUpload200Response
+from postboost.models.initiate_chunked_upload201_response import InitiateChunkedUpload201Response
 from postboost.models.initiate_chunked_upload_request import InitiateChunkedUploadRequest
 from postboost.rest import ApiException
 from pprint import pprint
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InitiateChunkedUpload200Response**](InitiateChunkedUpload200Response.md)
+[**InitiateChunkedUpload201Response**](InitiateChunkedUpload201Response.md)
 
 ### Authorization
 
@@ -499,14 +499,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunked upload session details |  -  |
+**201** | Chunked upload session details |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **initiate_remote_upload**
-> InitiateRemoteUpload200Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+> InitiateRemoteUpload201Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
 
 Initiate remote upload
 
@@ -518,7 +518,7 @@ Download a file from a remote URL into the media library. For small files the me
 
 ```python
 import postboost
-from postboost.models.initiate_remote_upload200_response import InitiateRemoteUpload200Response
+from postboost.models.initiate_remote_upload201_response import InitiateRemoteUpload201Response
 from postboost.models.initiate_remote_upload_request import InitiateRemoteUploadRequest
 from postboost.rest import ApiException
 from pprint import pprint
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InitiateRemoteUpload200Response**](InitiateRemoteUpload200Response.md)
+[**InitiateRemoteUpload201Response**](InitiateRemoteUpload201Response.md)
 
 ### Authorization
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Media object or download job |  -  |
+**201** | Media object or download job |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
@@ -755,7 +755,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_chunk**
-> UploadChunk200Response upload_chunk(workspace_uuid, upload_uuid, chunk, chunk_index)
+> UploadChunk201Response upload_chunk(workspace_uuid, upload_uuid, chunk, chunk_index)
 
 Upload a chunk
 
@@ -767,7 +767,7 @@ Upload a single chunk of a chunked upload session.
 
 ```python
 import postboost
-from postboost.models.upload_chunk200_response import UploadChunk200Response
+from postboost.models.upload_chunk201_response import UploadChunk201Response
 from postboost.rest import ApiException
 from pprint import pprint
 
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UploadChunk200Response**](UploadChunk200Response.md)
+[**UploadChunk201Response**](UploadChunk201Response.md)
 
 ### Authorization
 
@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Chunk received |  -  |
+**201** | Chunk received |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
@@ -918,7 +918,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Uploaded media object |  -  |
+**201** | Uploaded media object |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 

@@ -48,6 +48,14 @@ class TestAccount(unittest.TestCase):
             )
         else:
             return Account(
+                id = 56,
+                uuid = '',
+                name = 'My Instagram',
+                username = 'myhandle',
+                provider = 'instagram',
+                data = None,
+                authorized = True,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

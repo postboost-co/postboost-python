@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**uuid** | **str** |  | [optional] 
-**status** | [**PostStatus**](PostStatus.md) |  | [optional] 
-**accounts** | [**List[Account]**](Account.md) |  | [optional] 
-**versions** | [**List[PostVersion]**](PostVersion.md) |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] 
+**id** | **int** |  | 
+**uuid** | **str** |  | 
+**status** | [**PostStatus**](PostStatus.md) |  | 
+**accounts** | [**List[Account]**](Account.md) |  | 
+**versions** | [**List[PostVersion]**](PostVersion.md) |  | 
+**tags** | [**List[Tag]**](Tag.md) |  | 
 **scheduled_at** | **datetime** |  | [optional] 
 **published_at** | **datetime** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**trashed** | **bool** |  | [optional] 
+**created_at** | **datetime** |  | 
+**trashed** | **bool** |  | 
 
 ## Example
 

@@ -28,16 +28,16 @@ class Receipt(BaseModel):
     """
     Receipt
     """ # noqa: E501
-    uuid: Optional[StrictStr] = None
-    transaction_id: Optional[StrictStr] = None
-    invoice_number: Optional[StrictStr] = None
-    amount: Optional[Union[StrictFloat, StrictInt]] = None
-    tax: Optional[Union[StrictFloat, StrictInt]] = None
-    currency: Optional[StrictStr] = None
+    uuid: StrictStr
+    transaction_id: StrictStr
+    invoice_number: StrictStr
+    amount: Union[StrictFloat, StrictInt]
+    tax: Union[StrictFloat, StrictInt]
+    currency: StrictStr
     receipt_url: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    paid_at: Optional[datetime] = None
-    created_at: Optional[datetime] = None
+    paid_at: datetime
+    created_at: datetime
     __properties: ClassVar[List[str]] = ["uuid", "transaction_id", "invoice_number", "amount", "tax", "currency", "receipt_url", "description", "paid_at", "created_at"]
 
     model_config = ConfigDict(

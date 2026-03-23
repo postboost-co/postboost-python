@@ -48,6 +48,14 @@ class TestMedia(unittest.TestCase):
             )
         else:
             return Media(
+                id = 56,
+                uuid = '',
+                name = '',
+                mime_type = 'image/jpeg',
+                type = 'image',
+                url = '',
+                is_video = True,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

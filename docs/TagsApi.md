@@ -16,6 +16,8 @@ Method | HTTP request | Description
 
 Create tag
 
+Creates a new color-coded tag in the workspace for organizing posts.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -86,7 +88,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created tag |  -  |
+**201** | Created tag |  -  |
 **401** |  |  -  |
 **422** |  |  -  |
 
@@ -96,6 +98,8 @@ Name | Type | Description  | Notes
 > object delete_tag(workspace_uuid, tag_uuid)
 
 Delete tag
+
+Permanently deletes a tag. Posts that had this tag attached are unaffected.
 
 ### Example
 
@@ -177,6 +181,8 @@ Name | Type | Description  | Notes
 
 Get tag
 
+Returns a single tag by UUID.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -257,6 +263,8 @@ Name | Type | Description  | Notes
 
 List tags
 
+Returns all tags defined in the workspace.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -333,6 +341,8 @@ Name | Type | Description  | Notes
 > object update_tag(workspace_uuid, tag_uuid, tag_input)
 
 Update tag
+
+Updates a tag's name or color.
 
 ### Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deleted** | **bool** |  | [optional] 
-**deleted_from_app** | **bool** |  | [optional] 
-**to_trash** | **bool** |  | [optional] 
+**deleted** | **bool** |  | 
+**deleted_from_app** | **bool** |  | 
+**to_trash** | **bool** |  | 
 
 ## Example
 

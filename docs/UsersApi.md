@@ -17,6 +17,8 @@ Method | HTTP request | Description
 
 Create user
 
+Creates a new user account on the platform. Admin only.
+
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -85,8 +87,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created user |  -  |
+**201** | Created user |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -95,6 +98,8 @@ Name | Type | Description  | Notes
 > object delete_user(user_id)
 
 Delete user
+
+Permanently deletes a user account. Returns 400 if you attempt to delete your own account. Admin only.
 
 ### Example
 
@@ -166,6 +171,7 @@ Name | Type | Description  | Notes
 **200** |  |  -  |
 **400** | Cannot delete own account |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -173,6 +179,8 @@ Name | Type | Description  | Notes
 > object delete_users_bulk(delete_users_bulk_request)
 
 Delete users (bulk)
+
+Permanently deletes one or more user accounts. You cannot delete your own account. Admin only.
 
 ### Example
 
@@ -244,6 +252,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -251,6 +260,8 @@ Name | Type | Description  | Notes
 > User get_user(user_id)
 
 Get user
+
+Returns a single user account by ID. Admin only.
 
 ### Example
 
@@ -321,14 +332,17 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | User details |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_users**
-> ListUsers200Response list_users(keyword=keyword)
+> ListUsers200Response list_users(keyword=keyword, page=page)
 
 List users
+
+Returns a paginated list of all users on the platform. Optionally filter by name or email. Admin only.
 
 ### Example
 
@@ -361,10 +375,11 @@ with postboost.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = postboost.UsersApi(api_client)
     keyword = 'keyword_example' # str | Search by name or email. (optional)
+    page = 1 # int | Page number (15 items per page). (optional) (default to 1)
 
     try:
         # List users
-        api_response = api_instance.list_users(keyword=keyword)
+        api_response = api_instance.list_users(keyword=keyword, page=page)
         print("The response of UsersApi->list_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -379,6 +394,7 @@ with postboost.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **str**| Search by name or email. | [optional] 
+ **page** | **int**| Page number (15 items per page). | [optional] [default to 1]
 
 ### Return type
 
@@ -407,6 +423,8 @@ Name | Type | Description  | Notes
 > object update_user(user_id, user_update_input)
 
 Update user
+
+Updates a user's name, email, admin status, or password. Admin only.
 
 ### Example
 
@@ -480,6 +498,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

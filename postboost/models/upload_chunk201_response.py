@@ -18,17 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InitiateRemoteUpload200ResponseOneOf(BaseModel):
+class UploadChunk201Response(BaseModel):
     """
-    InitiateRemoteUpload200ResponseOneOf
+    UploadChunk201Response
     """ # noqa: E501
-    download_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["download_id"]
+    received: Optional[StrictInt] = Field(default=None, description="Number of chunks received so far.")
+    __properties: ClassVar[List[str]] = ["received"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +48,7 @@ class InitiateRemoteUpload200ResponseOneOf(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InitiateRemoteUpload200ResponseOneOf from a JSON string"""
+        """Create an instance of UploadChunk201Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class InitiateRemoteUpload200ResponseOneOf(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InitiateRemoteUpload200ResponseOneOf from a dict"""
+        """Create an instance of UploadChunk201Response from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +81,7 @@ class InitiateRemoteUpload200ResponseOneOf(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "download_id": obj.get("download_id")
+            "received": obj.get("received")
         })
         return _obj
 
