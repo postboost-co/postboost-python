@@ -13,7 +13,7 @@ pip install postboost
 | **PyPI** | [pypi.org/project/postboost](https://pypi.org/project/postboost/) |
 | **GitHub** | [postboost-co/postboost-python](https://github.com/postboost-co/postboost-python) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.2.0 |
+| **Version** | v1.3.0 |
 
 ## Quick start
 
@@ -36,6 +36,7 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AIApi* | [**blog_to_social**](docs/AIApi.md#blog_to_social) | **POST** /{workspaceUuid}/ai/blog-to-social | Generate social media captions from a blog post
 *AccountsApi* | [**get_account**](docs/AccountsApi.md#get_account) | **GET** /{workspaceUuid}/accounts/{accountUuid} | Get account
 *AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /{workspaceUuid}/accounts | List accounts
 *MediaApi* | [**abort_chunked_upload**](docs/MediaApi.md#abort_chunked_upload) | **DELETE** /{workspaceUuid}/media/chunked/{uploadUuid} | Abort chunked upload

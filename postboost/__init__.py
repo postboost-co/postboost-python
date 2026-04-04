@@ -5,7 +5,7 @@
 """
     PostBoost API
 
-    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 8+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
+    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 12+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
 
     The version of the OpenAPI document: 1.0.0
     Contact: hi@postboost.co
@@ -18,6 +18,7 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from postboost.api.ai_api import AIApi
 from postboost.api.accounts_api import AccountsApi
 from postboost.api.media_api import MediaApi
 from postboost.api.posts_api import PostsApi
@@ -41,6 +42,12 @@ from postboost.exceptions import ApiException
 # import models into sdk package
 from postboost.models.account import Account
 from postboost.models.add_generic_subscription_request import AddGenericSubscriptionRequest
+from postboost.models.blog_to_social200_response import BlogToSocial200Response
+from postboost.models.blog_to_social429_response import BlogToSocial429Response
+from postboost.models.blog_to_social_caption import BlogToSocialCaption
+from postboost.models.blog_to_social_input import BlogToSocialInput
+from postboost.models.blog_to_social_media import BlogToSocialMedia
+from postboost.models.blog_to_social_response import BlogToSocialResponse
 from postboost.models.change_subscription_plan_request import ChangeSubscriptionPlanRequest
 from postboost.models.checkout_subscription200_response import CheckoutSubscription200Response
 from postboost.models.checkout_subscription_request import CheckoutSubscriptionRequest

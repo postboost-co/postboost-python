@@ -3,7 +3,7 @@
 """
     PostBoost API
 
-    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 8+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
+    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 12+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with `/{workspaceUuid}`. Panel/admin endpoints are prefixed with `/panel`.  ## Authentication All requests require a Bearer token in the `Authorization` header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  ``` Authorization: Bearer YOUR_API_TOKEN ``` 
 
     The version of the OpenAPI document: 1.0.0
     Contact: hi@postboost.co
@@ -45,7 +45,7 @@ setup(
     license="Commercial",
     long_description_content_type='text/markdown',
     long_description="""\
-    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 8+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with &#x60;/{workspaceUuid}&#x60;. Panel/admin endpoints are prefixed with &#x60;/panel&#x60;.  ## Authentication All requests require a Bearer token in the &#x60;Authorization&#x60; header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  &#x60;&#x60;&#x60; Authorization: Bearer YOUR_API_TOKEN &#x60;&#x60;&#x60; 
+    The PostBoost REST API lets you publish, schedule, and analyze social media posts across 12+ platforms from a single integration. No OAuth apps to maintain — PostBoost handles platform authorization for you.  ## Base URL All workspace-scoped endpoints are prefixed with &#x60;/{workspaceUuid}&#x60;. Panel/admin endpoints are prefixed with &#x60;/panel&#x60;.  ## Authentication All requests require a Bearer token in the &#x60;Authorization&#x60; header. Generate tokens in your PostBoost dashboard under **Settings → Access Tokens**.  &#x60;&#x60;&#x60; Authorization: Bearer YOUR_API_TOKEN &#x60;&#x60;&#x60; 
     """,  # noqa: E501
     package_data={"postboost": ["py.typed"]},
 )
