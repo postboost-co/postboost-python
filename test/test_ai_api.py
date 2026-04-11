@@ -34,6 +34,41 @@ class TestAIApi(unittest.TestCase):
         """
         pass
 
+    def test_image_alt_text(self) -> None:
+        """Test case for image_alt_text
+
+        Generate alt text for a media image using AI
+        """
+        pass
+
+    def test_image_edit(self) -> None:
+        """Test case for image_edit
+
+        Edit an existing media image using AI
+        """
+        pass
+
+    def test_image_generate(self) -> None:
+        """Test case for image_generate
+
+        Generate social media images from a caption
+        """
+        pass
+
+    def test_image_prompt(self) -> None:
+        """Test case for image_prompt
+
+        Build an optimized image prompt from a social media caption
+        """
+        pass
+
+    def test_image_variations(self) -> None:
+        """Test case for image_variations
+
+        Generate variations of an existing media image
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

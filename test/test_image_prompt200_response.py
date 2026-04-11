@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.blog_to_social_input import BlogToSocialInput
+from postboost.models.image_prompt200_response import ImagePrompt200Response
 
-class TestBlogToSocialInput(unittest.TestCase):
-    """BlogToSocialInput unit test stubs"""
+class TestImagePrompt200Response(unittest.TestCase):
+    """ImagePrompt200Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,37 +26,28 @@ class TestBlogToSocialInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BlogToSocialInput:
-        """Test BlogToSocialInput
+    def make_instance(self, include_optional) -> ImagePrompt200Response:
+        """Test ImagePrompt200Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BlogToSocialInput`
+        # uncomment below to create an instance of `ImagePrompt200Response`
         """
-        model = BlogToSocialInput()
+        model = ImagePrompt200Response()
         if include_optional:
-            return BlogToSocialInput(
-                url = 'https://example.com/blog/my-post',
-                title = '10 Tips for Better Social Media',
-                excerpt = 'Social media success starts with consistency and knowing your audience...',
-                image_url = 'https://example.com/images/post-cover.jpg',
-                platforms = [twitter, linkedin],
-                account_ids = [5, 12],
-                tone = 'engaging',
-                content_length = 'medium',
-                hashtags = 'few',
-                cta = 'none',
-                language = 'auto',
-                custom_instructions = 'Always mention that PostBoost supports 12+ platforms.',
-                create_post = True
+            return ImagePrompt200Response(
+                data = postboost.models.image_prompt_response.ImagePromptResponse(
+                    prompt = 'Create a vibrant, lifestyle-oriented social media image for Instagram...', )
             )
         else:
-            return BlogToSocialInput(
+            return ImagePrompt200Response(
+                data = postboost.models.image_prompt_response.ImagePromptResponse(
+                    prompt = 'Create a vibrant, lifestyle-oriented social media image for Instagram...', ),
         )
         """
 
-    def testBlogToSocialInput(self):
-        """Test BlogToSocialInput"""
+    def testImagePrompt200Response(self):
+        """Test ImagePrompt200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

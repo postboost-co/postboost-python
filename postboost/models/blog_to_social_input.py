@@ -50,8 +50,8 @@ class BlogToSocialInput(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['facebook', 'instagram', 'x', 'linkedin', 'pinterest', 'youtube', 'tiktok', 'mastodon', 'threads', 'bluesky', 'google_business']):
-                raise ValueError("each list item must be one of ('facebook', 'instagram', 'x', 'linkedin', 'pinterest', 'youtube', 'tiktok', 'mastodon', 'threads', 'bluesky', 'google_business')")
+            if i not in set(['twitter', 'facebook_page', 'instagram', 'threads', 'mastodon', 'youtube', 'gbp', 'pinterest', 'linkedin', 'linkedin_page', 'tiktok', 'bluesky']):
+                raise ValueError("each list item must be one of ('twitter', 'facebook_page', 'instagram', 'threads', 'mastodon', 'youtube', 'gbp', 'pinterest', 'linkedin', 'linkedin_page', 'tiktok', 'bluesky')")
         return value
 
     @field_validator('tone')

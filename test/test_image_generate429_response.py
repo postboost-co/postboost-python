@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.blog_to_social_input import BlogToSocialInput
+from postboost.models.image_generate429_response import ImageGenerate429Response
 
-class TestBlogToSocialInput(unittest.TestCase):
-    """BlogToSocialInput unit test stubs"""
+class TestImageGenerate429Response(unittest.TestCase):
+    """ImageGenerate429Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,37 +26,25 @@ class TestBlogToSocialInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BlogToSocialInput:
-        """Test BlogToSocialInput
+    def make_instance(self, include_optional) -> ImageGenerate429Response:
+        """Test ImageGenerate429Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BlogToSocialInput`
+        # uncomment below to create an instance of `ImageGenerate429Response`
         """
-        model = BlogToSocialInput()
+        model = ImageGenerate429Response()
         if include_optional:
-            return BlogToSocialInput(
-                url = 'https://example.com/blog/my-post',
-                title = '10 Tips for Better Social Media',
-                excerpt = 'Social media success starts with consistency and knowing your audience...',
-                image_url = 'https://example.com/images/post-cover.jpg',
-                platforms = [twitter, linkedin],
-                account_ids = [5, 12],
-                tone = 'engaging',
-                content_length = 'medium',
-                hashtags = 'few',
-                cta = 'none',
-                language = 'auto',
-                custom_instructions = 'Always mention that PostBoost supports 12+ platforms.',
-                create_post = True
+            return ImageGenerate429Response(
+                message = 'Insufficient AI credits. You need 5 credits but only have 2 remaining this month.'
             )
         else:
-            return BlogToSocialInput(
+            return ImageGenerate429Response(
         )
         """
 
-    def testBlogToSocialInput(self):
-        """Test BlogToSocialInput"""
+    def testImageGenerate429Response(self):
+        """Test ImageGenerate429Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

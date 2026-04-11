@@ -15,10 +15,10 @@
 
 import unittest
 
-from postboost.models.blog_to_social_input import BlogToSocialInput
+from postboost.models.image_prompt_input import ImagePromptInput
 
-class TestBlogToSocialInput(unittest.TestCase):
-    """BlogToSocialInput unit test stubs"""
+class TestImagePromptInput(unittest.TestCase):
+    """ImagePromptInput unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,37 +26,32 @@ class TestBlogToSocialInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BlogToSocialInput:
-        """Test BlogToSocialInput
+    def make_instance(self, include_optional) -> ImagePromptInput:
+        """Test ImagePromptInput
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BlogToSocialInput`
+        # uncomment below to create an instance of `ImagePromptInput`
         """
-        model = BlogToSocialInput()
+        model = ImagePromptInput()
         if include_optional:
-            return BlogToSocialInput(
-                url = 'https://example.com/blog/my-post',
-                title = '10 Tips for Better Social Media',
-                excerpt = 'Social media success starts with consistency and knowing your audience...',
-                image_url = 'https://example.com/images/post-cover.jpg',
-                platforms = [twitter, linkedin],
-                account_ids = [5, 12],
-                tone = 'engaging',
-                content_length = 'medium',
-                hashtags = 'few',
-                cta = 'none',
-                language = 'auto',
-                custom_instructions = 'Always mention that PostBoost supports 12+ platforms.',
-                create_post = True
+            return ImagePromptInput(
+                caption = 'Our summer sale starts today, 30% off everything!',
+                platform = 'instagram',
+                template = 'blog_cover',
+                style = 'minimalist',
+                brand_voice = 'friendly',
+                custom_instructions = ''
             )
         else:
-            return BlogToSocialInput(
+            return ImagePromptInput(
+                caption = 'Our summer sale starts today, 30% off everything!',
+                platform = 'instagram',
         )
         """
 
-    def testBlogToSocialInput(self):
-        """Test BlogToSocialInput"""
+    def testImagePromptInput(self):
+        """Test ImagePromptInput"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
