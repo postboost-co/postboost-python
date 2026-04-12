@@ -35,7 +35,6 @@ from postboost.models.delete_result import DeleteResult
 from postboost.models.delete_user400_response import DeleteUser400Response
 from postboost.models.delete_users_bulk_request import DeleteUsersBulkRequest
 from postboost.models.delete_workspaces_bulk_request import DeleteWorkspacesBulkRequest
-from postboost.models.generated_image_item import GeneratedImageItem
 from postboost.models.get_remote_upload_status200_response import GetRemoteUploadStatus200Response
 from postboost.models.image_alt_text200_response import ImageAltText200Response
 from postboost.models.image_alt_text_input import ImageAltTextInput

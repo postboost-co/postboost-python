@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**List[GeneratedImageItem]**](GeneratedImageItem.md) |  | 
+**images** | [**List[Media]**](Media.md) |  | 
 **aspect_ratio** | **str** |  | 
 **quality** | **str** |  | 
 **credits_used** | **int** |  | 

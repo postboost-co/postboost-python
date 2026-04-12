@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from postboost.models.generated_image_item import GeneratedImageItem
+from postboost.models.media import Media
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ImageVariationsResponse(BaseModel):
     """
     ImageVariationsResponse
     """ # noqa: E501
-    images: List[GeneratedImageItem]
+    images: List[Media]
     aspect_ratio: StrictStr
     quality: StrictStr
     credits_used: StrictInt
@@ -93,7 +93,7 @@ class ImageVariationsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "images": [GeneratedImageItem.from_dict(_item) for _item in obj["images"]] if obj.get("images") is not None else None,
+            "images": [Media.from_dict(_item) for _item in obj["images"]] if obj.get("images") is not None else None,
             "aspect_ratio": obj.get("aspect_ratio"),
             "quality": obj.get("quality"),
             "credits_used": obj.get("credits_used"),

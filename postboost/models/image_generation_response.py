@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from postboost.models.generated_image_item import GeneratedImageItem
+from postboost.models.media import Media
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ImageGenerationResponse(BaseModel):
     """
     ImageGenerationResponse
     """ # noqa: E501
-    images: List[GeneratedImageItem]
+    images: List[Media]
     prompt_used: StrictStr
     revised_prompt: Optional[StrictStr] = None
     aspect_ratio: StrictStr
@@ -95,7 +95,7 @@ class ImageGenerationResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "images": [GeneratedImageItem.from_dict(_item) for _item in obj["images"]] if obj.get("images") is not None else None,
+            "images": [Media.from_dict(_item) for _item in obj["images"]] if obj.get("images") is not None else None,
             "prompt_used": obj.get("prompt_used"),
             "revised_prompt": obj.get("revised_prompt"),
             "aspect_ratio": obj.get("aspect_ratio"),

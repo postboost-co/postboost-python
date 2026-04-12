@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**List[GeneratedImageItem]**](GeneratedImageItem.md) |  | 
+**images** | [**List[Media]**](Media.md) |  | 
 **prompt_used** | **str** |  | 
 **revised_prompt** | **str** |  | [optional] 
 **aspect_ratio** | **str** |  | 

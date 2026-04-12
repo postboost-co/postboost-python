@@ -38,10 +38,16 @@ class TestImageVariations200Response(unittest.TestCase):
             return ImageVariations200Response(
                 data = postboost.models.image_variations_response.ImageVariationsResponse(
                     images = [
-                        postboost.models.generated_image_item.GeneratedImageItem(
-                            media_id = 42, 
+                        postboost.models.media.Media(
+                            id = 56, 
+                            uuid = '', 
+                            name = '', 
+                            mime_type = 'image/jpeg', 
+                            type = 'image', 
                             url = '', 
-                            thumb_url = '', )
+                            thumb_url = '', 
+                            is_video = True, 
+                            created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                         ], 
                     aspect_ratio = '1:1', 
                     quality = 'standard', 
@@ -52,10 +58,16 @@ class TestImageVariations200Response(unittest.TestCase):
             return ImageVariations200Response(
                 data = postboost.models.image_variations_response.ImageVariationsResponse(
                     images = [
-                        postboost.models.generated_image_item.GeneratedImageItem(
-                            media_id = 42, 
+                        postboost.models.media.Media(
+                            id = 56, 
+                            uuid = '', 
+                            name = '', 
+                            mime_type = 'image/jpeg', 
+                            type = 'image', 
                             url = '', 
-                            thumb_url = '', )
+                            thumb_url = '', 
+                            is_video = True, 
+                            created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                         ], 
                     aspect_ratio = '1:1', 
                     quality = 'standard', 

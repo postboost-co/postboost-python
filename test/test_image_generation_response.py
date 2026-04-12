@@ -37,10 +37,16 @@ class TestImageGenerationResponse(unittest.TestCase):
         if include_optional:
             return ImageGenerationResponse(
                 images = [
-                    postboost.models.generated_image_item.GeneratedImageItem(
-                        media_id = 42, 
+                    postboost.models.media.Media(
+                        id = 56, 
+                        uuid = '', 
+                        name = '', 
+                        mime_type = 'image/jpeg', 
+                        type = 'image', 
                         url = '', 
-                        thumb_url = '', )
+                        thumb_url = '', 
+                        is_video = True, 
+                        created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
                 prompt_used = '',
                 revised_prompt = '',
@@ -52,10 +58,16 @@ class TestImageGenerationResponse(unittest.TestCase):
         else:
             return ImageGenerationResponse(
                 images = [
-                    postboost.models.generated_image_item.GeneratedImageItem(
-                        media_id = 42, 
+                    postboost.models.media.Media(
+                        id = 56, 
+                        uuid = '', 
+                        name = '', 
+                        mime_type = 'image/jpeg', 
+                        type = 'image', 
                         url = '', 
-                        thumb_url = '', )
+                        thumb_url = '', 
+                        is_video = True, 
+                        created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
                 prompt_used = '',
                 aspect_ratio = '1:1',
