@@ -10,17 +10,19 @@ Method | HTTP request | Description
 [**delete_post**](PostsApi.md#delete_post) | **DELETE** /{workspaceUuid}/posts/{postUuid} | Delete post
 [**delete_posts_bulk**](PostsApi.md#delete_posts_bulk) | **DELETE** /{workspaceUuid}/posts | Delete posts (bulk)
 [**get_post**](PostsApi.md#get_post) | **GET** /{workspaceUuid}/posts/{postUuid} | Get post
+[**get_post_analytics**](PostsApi.md#get_post_analytics) | **GET** /{workspaceUuid}/posts/{postUuid}/analytics | Get post analytics
 [**list_posts**](PostsApi.md#list_posts) | **GET** /{workspaceUuid}/posts | List posts
+[**retry_post_account**](PostsApi.md#retry_post_account) | **POST** /{workspaceUuid}/posts/retry/{postUuid}/{accountUuid} | Retry publishing to one account
 [**schedule_post**](PostsApi.md#schedule_post) | **POST** /{workspaceUuid}/posts/schedule/{postUuid} | Schedule post
 [**update_post**](PostsApi.md#update_post) | **PUT** /{workspaceUuid}/posts/{postUuid} | Update post
 
 
 # **add_post_to_queue**
-> ScheduleResult add_post_to_queue(workspace_uuid, post_uuid)
+> ScheduleResult add_post_to_queue(workspace_uuid, post_uuid, add_post_to_queue_request=add_post_to_queue_request)
 
 Add post to queue
 
-Add an existing post to the smart publishing queue.
+Add an existing post to the smart publishing queue. Each account of the post gets its own next free queue slot. Returns `422` when the post has no accounts, the posting schedule has no available times, or provider requirements are not met. 
 
 ### Example
 
@@ -28,6 +30,7 @@ Add an existing post to the smart publishing queue.
 
 ```python
 import postboost
+from postboost.models.add_post_to_queue_request import AddPostToQueueRequest
 from postboost.models.schedule_result import ScheduleResult
 from postboost.rest import ApiException
 from pprint import pprint
@@ -54,10 +57,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.PostsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     post_uuid = 'post_uuid_example' # str | UUID of the post.
+    add_post_to_queue_request = postboost.AddPostToQueueRequest() # AddPostToQueueRequest |  (optional)
 
     try:
         # Add post to queue
-        api_response = api_instance.add_post_to_queue(workspace_uuid, post_uuid)
+        api_response = api_instance.add_post_to_queue(workspace_uuid, post_uuid, add_post_to_queue_request=add_post_to_queue_request)
         print("The response of PostsApi->add_post_to_queue:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,6 +77,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **post_uuid** | **str**| UUID of the post. | 
+ **add_post_to_queue_request** | [**AddPostToQueueRequest**](AddPostToQueueRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -84,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -93,16 +98,18 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Queue confirmation |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
+**422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **approve_post**
-> ScheduleResult approve_post(workspace_uuid, post_uuid)
+> ScheduleResult approve_post(workspace_uuid, post_uuid, approve_post_request=approve_post_request)
 
 Approve post
 
-Approve a post that is pending review.
+Approve a post that is pending review. The approver may move the post with `date`/`time` (read in `timezone`) and set per-account times with `accounts_schedule`; without them the post keeps the time it was submitted with. Provider requirements are validated and reported as `422`. 
 
 ### Example
 
@@ -110,6 +117,7 @@ Approve a post that is pending review.
 
 ```python
 import postboost
+from postboost.models.approve_post_request import ApprovePostRequest
 from postboost.models.schedule_result import ScheduleResult
 from postboost.rest import ApiException
 from pprint import pprint
@@ -136,10 +144,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.PostsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     post_uuid = 'post_uuid_example' # str | UUID of the post.
+    approve_post_request = postboost.ApprovePostRequest() # ApprovePostRequest |  (optional)
 
     try:
         # Approve post
-        api_response = api_instance.approve_post(workspace_uuid, post_uuid)
+        api_response = api_instance.approve_post(workspace_uuid, post_uuid, approve_post_request=approve_post_request)
         print("The response of PostsApi->approve_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -155,6 +164,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **post_uuid** | **str**| UUID of the post. | 
+ **approve_post_request** | [**ApprovePostRequest**](ApprovePostRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -166,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -177,6 +187,7 @@ Name | Type | Description  | Notes
 **401** |  |  -  |
 **403** |  |  -  |
 **404** |  |  -  |
+**422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -185,7 +196,7 @@ Name | Type | Description  | Notes
 
 Create post
 
-Create a new post. Use `schedule: true` with `date` and `time` to schedule, `schedule_now: true` to publish immediately, or `queue: true` to add to the smart publishing queue. 
+Create a new post. Use `schedule: true` with `date` and `time` to schedule, `schedule_now: true` to publish immediately, or `queue: true` to add to the smart publishing queue (each account gets its own queue slot).  `date`, `time` and `accounts_schedule` are read in `timezone` when given, otherwise in the workspace timezone. Use `accounts_schedule` to give individual accounts their own departure time.  Post bodies may reference mentions with `{{mention:<reference>}}` (see the Mentions endpoints). When the post is scheduled, provider requirements (for example a network that requires media) are validated up front and reported as `422`. 
 
 ### Example
 
@@ -259,6 +270,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Created post |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -344,6 +356,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Deletion result |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -427,6 +440,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Deletion result |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -508,6 +522,90 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Post details |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_post_analytics**
+> PostAnalytics get_post_analytics(workspace_uuid, post_uuid)
+
+Get post analytics
+
+Engagement metrics for a published post across its accounts (also works for trashed posts), with totals, trends and the best-performing account.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.post_analytics import PostAnalytics
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.PostsApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    post_uuid = 'post_uuid_example' # str | UUID of the post.
+
+    try:
+        # Get post analytics
+        api_response = api_instance.get_post_analytics(workspace_uuid, post_uuid)
+        print("The response of PostsApi->get_post_analytics:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->get_post_analytics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **post_uuid** | **str**| UUID of the post. | 
+
+### Return type
+
+[**PostAnalytics**](PostAnalytics.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Post analytics |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -590,6 +688,93 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Paginated list of posts |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retry_post_account**
+> RetryPostAccountResult retry_post_account(workspace_uuid, post_uuid, account_uuid)
+
+Retry publishing to one account
+
+Re-publishes a post to a single account whose publishing failed. Returns `422` when the account is not on the post, the post is still publishing, or the account did not fail.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.retry_post_account_result import RetryPostAccountResult
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.PostsApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    post_uuid = 'post_uuid_example' # str | UUID of the post.
+    account_uuid = 'account_uuid_example' # str | UUID of the social media account.
+
+    try:
+        # Retry publishing to one account
+        api_response = api_instance.retry_post_account(workspace_uuid, post_uuid, account_uuid)
+        print("The response of PostsApi->retry_post_account:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->retry_post_account: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **post_uuid** | **str**| UUID of the post. | 
+ **account_uuid** | **str**| UUID of the social media account. | 
+
+### Return type
+
+[**RetryPostAccountResult**](RetryPostAccountResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Retry started |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -598,7 +783,7 @@ Name | Type | Description  | Notes
 
 Schedule post
 
-Schedule an existing post. Set `postNow: true` to publish immediately.
+Schedule an existing post. Optionally move it with `date`/`time` (read in `timezone`) and give accounts their own times with `accounts_schedule`. Set `postNow: true` to publish immediately; publishing starts within the request and any per-account times are dropped. Provider requirements are validated and reported as `422`. 
 
 ### Example
 
@@ -674,7 +859,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Schedule confirmation |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
+**422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -683,7 +870,7 @@ Name | Type | Description  | Notes
 
 Update post
 
-Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state.
+Replaces a post's versions, accounts, tags, and scheduling options. The post must not be in a published state. `timezone` is honoured: `date`, `time` and `accounts_schedule` are read in it. When the post stays scheduled, provider requirements are validated and reported as `422`. 
 
 ### Example
 
@@ -759,6 +946,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** |  |  -  |
 **401** |  |  -  |
+**403** |  |  -  |
 **404** |  |  -  |
 **422** |  |  -  |
 

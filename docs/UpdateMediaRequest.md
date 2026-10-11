@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**alt_text** | **str** | Alternative text for accessibility. | 
+**name** | **str** |  | [optional] 
+**alt_text** | **str** | Alternative text for accessibility. | [optional] 
+**folder** | **str** | UUID of the media folder to move the item to, or null for the library root. | [optional] 
 
 ## Example
 

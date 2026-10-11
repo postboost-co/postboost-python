@@ -3,7 +3,9 @@
 # import apis into api package
 from postboost.api.ai_api import AIApi
 from postboost.api.accounts_api import AccountsApi
+from postboost.api.analytics_api import AnalyticsApi
 from postboost.api.media_api import MediaApi
+from postboost.api.mentions_api import MentionsApi
 from postboost.api.posts_api import PostsApi
 from postboost.api.receipts_api import ReceiptsApi
 from postboost.api.subscriptions_api import SubscriptionsApi

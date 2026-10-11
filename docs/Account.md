@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **provider** | **str** |  | 
 **data** | **object** | Provider-specific metadata. | 
 **authorized** | **bool** |  | 
+**profile_url** | **str** | Public URL of the account&#39;s profile on the network, when known. | [optional] 
+**publish_status** | **str** | Only present when the account is embedded in a post. Publishing state of this account for the post. | [optional] 
+**published_parts** | **int** | Only present when the account is embedded in a post. How many parts (for example thread items or a first comment) are live on the network. | [optional] 
 **created_at** | **datetime** |  | 
 
 ## Example

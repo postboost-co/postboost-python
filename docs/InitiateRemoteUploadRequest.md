@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | URL of the remote file to download. | 
 **alt_text** | **str** |  | [optional] 
+**folder** | **str** | UUID of the media folder to file the item in. Omit or null for the library root. | [optional] 
 
 ## Example
 

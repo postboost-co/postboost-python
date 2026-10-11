@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**delete_workspace**](WorkspacesApi.md#delete_workspace) | **DELETE** /panel/workspaces/{workspaceUuid} | Delete workspace
 [**delete_workspaces_bulk**](WorkspacesApi.md#delete_workspaces_bulk) | **DELETE** /panel/workspaces | Delete workspaces (bulk)
 [**get_workspace**](WorkspacesApi.md#get_workspace) | **GET** /panel/workspaces/{workspaceUuid} | Get workspace
+[**get_workspace_ai_credits**](WorkspacesApi.md#get_workspace_ai_credits) | **GET** /panel/workspaces/{workspaceUuid}/ai-credits | Get workspace AI credits
+[**list_my_workspaces**](WorkspacesApi.md#list_my_workspaces) | **GET** /workspaces | List my workspaces
 [**list_workspaces**](WorkspacesApi.md#list_workspaces) | **GET** /panel/workspaces | List workspaces
 [**remove_user_from_workspace**](WorkspacesApi.md#remove_user_from_workspace) | **DELETE** /panel/workspaces/{workspaceUuid}/users | Remove user from workspace
 [**update_workspace**](WorkspacesApi.md#update_workspace) | **PUT** /panel/workspaces/{workspaceUuid} | Update workspace
@@ -424,6 +426,162 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_workspace_ai_credits**
+> AICredits get_workspace_ai_credits(workspace_uuid)
+
+Get workspace AI credits
+
+Returns whether the workspace can use AI credits, its remaining balance, and whether the balance is low. Admin only.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.ai_credits import AICredits
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.WorkspacesApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+
+    try:
+        # Get workspace AI credits
+        api_response = api_instance.get_workspace_ai_credits(workspace_uuid)
+        print("The response of WorkspacesApi->get_workspace_ai_credits:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkspacesApi->get_workspace_ai_credits: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+
+### Return type
+
+[**AICredits**](AICredits.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | AI credit status |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_my_workspaces**
+> ListMyWorkspaces200Response list_my_workspaces()
+
+List my workspaces
+
+Returns the workspaces the authenticated user belongs to, most recently updated first, with the caller's role in each. Use a returned `uuid` as `workspaceUuid`.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.list_my_workspaces200_response import ListMyWorkspaces200Response
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.WorkspacesApi(api_client)
+
+    try:
+        # List my workspaces
+        api_response = api_instance.list_my_workspaces()
+        print("The response of WorkspacesApi->list_my_workspaces:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkspacesApi->list_my_workspaces: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListMyWorkspaces200Response**](ListMyWorkspaces200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The caller&#39;s workspaces |  -  |
+**401** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_workspaces**
 > ListWorkspaces200Response list_workspaces(keyword=keyword, subscription_status=subscription_status, access_status=access_status, page=page)
 
@@ -598,7 +756,7 @@ Name | Type | Description  | Notes
 
 Update workspace
 
-Updates a workspace's name, color, or access status. Admin only.
+Updates a workspace's name, owner, or access status. Admin only. `hex_color` is accepted but ignored.
 
 ### Example
 

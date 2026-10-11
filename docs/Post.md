@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **uuid** | **str** |  | 
 **status** | [**PostStatus**](PostStatus.md) |  | 
+**publish_progress** | [**PublishProgress**](PublishProgress.md) | Only present while the post is publishing. | [optional] 
 **accounts** | [**List[Account]**](Account.md) |  | 
 **versions** | [**List[PostVersion]**](PostVersion.md) |  | 
 **tags** | [**List[Tag]**](Tag.md) |  | 

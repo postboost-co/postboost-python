@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**hex_color** | **str** |  | 
+**hex_color** | **str** | Ignored since v2.0; kept for backward compatibility | [optional] 
 **owner_id** | **int** |  | [optional] 
 **access_status** | **str** |  | 
 

@@ -100,11 +100,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_subscription**
-> object cancel_subscription(workspace_uuid)
+> object cancel_subscription(workspace_uuid, cancel_subscription_request=cancel_subscription_request)
 
 Cancel subscription
 
-Cancels the workspace's Stripe subscription at the end of the current billing period. Admin only.
+Cancels the workspace's Stripe subscription at the end of the current billing period, or right away with `immediately: true`. Works for active and past-due subscriptions. Admin only. 
 
 ### Example
 
@@ -112,6 +112,7 @@ Cancels the workspace's Stripe subscription at the end of the current billing pe
 
 ```python
 import postboost
+from postboost.models.cancel_subscription_request import CancelSubscriptionRequest
 from postboost.models.object import object
 from postboost.rest import ApiException
 from pprint import pprint
@@ -137,10 +138,11 @@ with postboost.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = postboost.SubscriptionsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    cancel_subscription_request = postboost.CancelSubscriptionRequest() # CancelSubscriptionRequest |  (optional)
 
     try:
         # Cancel subscription
-        api_response = api_instance.cancel_subscription(workspace_uuid)
+        api_response = api_instance.cancel_subscription(workspace_uuid, cancel_subscription_request=cancel_subscription_request)
         print("The response of SubscriptionsApi->cancel_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -155,6 +157,7 @@ with postboost.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
+ **cancel_subscription_request** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -166,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -176,6 +179,7 @@ Name | Type | Description  | Notes
 **200** |  |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
+**422** | The workspace has no active or past-due subscription, or the billing provider rejected the cancellation. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -594,7 +598,7 @@ Name | Type | Description  | Notes
 
 Remove generic subscription
 
-Removes the generic (non-Stripe) subscription from the workspace. Admin only.
+Removes the generic (non-Stripe) subscription from the workspace. Returns `422` when the workspace has no generic subscription. Admin only.
 
 ### Example
 
@@ -666,6 +670,7 @@ Name | Type | Description  | Notes
 **200** |  |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
+**422** | The workspace has no generic subscription. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

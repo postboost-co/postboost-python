@@ -92,11 +92,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_accounts**
-> ListAccounts200Response list_accounts(workspace_uuid)
+> ListAccounts200Response list_accounts(workspace_uuid, keyword=keyword, group=group, providers=providers, unauthorized=unauthorized)
 
 List accounts
 
-Returns all social media accounts connected to the workspace.
+Returns all social media accounts connected to the workspace, newest first. Optional filters narrow the list.
 
 ### Example
 
@@ -129,10 +129,14 @@ with postboost.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = postboost.AccountsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    keyword = 'keyword_example' # str | Match the account name or username. (optional)
+    group = 'group_example' # str | Only accounts in this account group. (optional)
+    providers = ['providers_example'] # List[str] | Only accounts of these providers (for example `instagram`, `linkedin`). (optional)
+    unauthorized = True # bool | When `true`, only accounts that need to be reconnected. (optional)
 
     try:
         # List accounts
-        api_response = api_instance.list_accounts(workspace_uuid)
+        api_response = api_instance.list_accounts(workspace_uuid, keyword=keyword, group=group, providers=providers, unauthorized=unauthorized)
         print("The response of AccountsApi->list_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,6 +151,10 @@ with postboost.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
+ **keyword** | **str**| Match the account name or username. | [optional] 
+ **group** | **str**| Only accounts in this account group. | [optional] 
+ **providers** | [**List[str]**](str.md)| Only accounts of these providers (for example &#x60;instagram&#x60;, &#x60;linkedin&#x60;). | [optional] 
+ **unauthorized** | **bool**| When &#x60;true&#x60;, only accounts that need to be reconnected. | [optional] 
 
 ### Return type
 

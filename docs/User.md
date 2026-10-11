@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **name** | **str** |  | 
 **email** | **str** |  | 
+**avatar** | **str** | URL of the user&#39;s avatar, or null when none is set. | [optional] 
 **is_admin** | **bool** |  | 
 **email_verified_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | 

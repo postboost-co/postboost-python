@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | **List[int]** | Array of media IDs to delete. | 
+**items** | [**List[DeleteMediaBulkRequestItemsInner]**](DeleteMediaBulkRequestItemsInner.md) | Array of media IDs or UUIDs to delete. | 
 
 ## Example
 

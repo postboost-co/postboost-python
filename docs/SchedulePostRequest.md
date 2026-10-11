@@ -6,6 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **post_now** | **bool** |  | 
+**var_date** | **date** | New date for the post (Y-m-d). Use together with &#x60;time&#x60;. | [optional] 
+**time** | **str** | New time for the post (H:i). | [optional] 
+**timezone** | **str** | Timezone &#x60;date&#x60;, &#x60;time&#x60; and &#x60;accounts_schedule&#x60; are read in. Defaults to the workspace timezone. | [optional] 
+**accounts_schedule** | [**List[AccountSchedule]**](AccountSchedule.md) | Per-account departure times. When omitted, accounts keep their offsets from the post time. | [optional] 
 
 ## Example
 
