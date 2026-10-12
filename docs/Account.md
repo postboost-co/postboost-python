@@ -16,7 +16,9 @@ Name | Type | Description | Notes
 **profile_url** | **str** | Public URL of the account&#39;s profile on the network, when known. | [optional] 
 **publish_status** | **str** | Only present when the account is embedded in a post. Publishing state of this account for the post. | [optional] 
 **published_parts** | **int** | Only present when the account is embedded in a post. How many parts (for example thread items or a first comment) are live on the network. | [optional] 
-**created_at** | **datetime** |  | 
+**external_url** | **str** | Only present when the account is embedded in a post. URL of the published post on the network, null until it is live. | [optional] 
+**errors** | [**List[AccountErrorsInner]**](AccountErrorsInner.md) | Only present when the account is embedded in a post. Why publishing to this account failed. A raw network error is stored as two entries: a readable line (&#x60;\&quot;&lt;Network&gt;: &lt;message&gt; (code &lt;code&gt;)\&quot;&#x60;) and an object &#x60;{platform, code, message, raw}&#x60; with the network&#39;s original response in &#x60;raw&#x60;. Other failures are a single readable string.  | [optional] 
+**created_at** | **str** | UTC, formatted &#x60;Y-m-d H:i:s&#x60;. | 
 
 ## Example
 

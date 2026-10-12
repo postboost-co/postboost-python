@@ -5,11 +5,17 @@ All URIs are relative to *https://postboost.co/app/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**blog_to_social**](AIApi.md#blog_to_social) | **POST** /{workspaceUuid}/ai/blog-to-social | Generate social media captions from a blog post
+[**delete_brand_voice**](AIApi.md#delete_brand_voice) | **DELETE** /{workspaceUuid}/brand-voice | Delete the brand voice
+[**get_ai_usage**](AIApi.md#get_ai_usage) | **GET** /{workspaceUuid}/usage/ai | AI credit usage
+[**get_brand_voice**](AIApi.md#get_brand_voice) | **GET** /{workspaceUuid}/brand-voice | Get the brand voice
 [**image_alt_text**](AIApi.md#image_alt_text) | **POST** /{workspaceUuid}/ai/image-alt-text | Generate alt text for a media image using AI
 [**image_edit**](AIApi.md#image_edit) | **POST** /{workspaceUuid}/ai/image-edit | Edit an existing media image using AI
 [**image_generate**](AIApi.md#image_generate) | **POST** /{workspaceUuid}/ai/image-generate | Generate social media images from a caption
 [**image_prompt**](AIApi.md#image_prompt) | **POST** /{workspaceUuid}/ai/image-prompt | Build an optimized image prompt from a social media caption
 [**image_variations**](AIApi.md#image_variations) | **POST** /{workspaceUuid}/ai/image-variations | Generate variations of an existing media image
+[**learn_brand_voice**](AIApi.md#learn_brand_voice) | **POST** /{workspaceUuid}/brand-voice/learn | Learn a brand voice from past posts
+[**repurpose_content**](AIApi.md#repurpose_content) | **POST** /{workspaceUuid}/ai/repurpose | Repurpose long-form content into a draft post set with a carousel
+[**update_brand_voice**](AIApi.md#update_brand_voice) | **PUT** /{workspaceUuid}/brand-voice | Create or update the brand voice
 
 
 # **blog_to_social**
@@ -94,6 +100,246 @@ Name | Type | Description  | Notes
 **403** |  |  -  |
 **422** |  |  -  |
 **429** | AI credits exhausted for this billing period |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_brand_voice**
+> object delete_brand_voice(workspace_uuid)
+
+Delete the brand voice
+
+Removes the workspace's brand voice. AI endpoints then run without one. Admins and members only.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.object import object
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+
+    try:
+        # Delete the brand voice
+        api_response = api_instance.delete_brand_voice(workspace_uuid)
+        print("The response of AIApi->delete_brand_voice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->delete_brand_voice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ai_usage**
+> AIUsage get_ai_usage(workspace_uuid)
+
+AI credit usage
+
+The workspace's AI credits: text credits (captions, rewrites, outlines, alt text; counted per billing cycle) and image credits (one per generated, edited or varied image, and one per repurpose carousel; counted per calendar month, UTC). `limit` and `remaining` are `null` when the workspace has no limit. Readable when credits are used up; costs nothing.  When image credits run out, the image endpoints and carousels answer `429` with `code: image_credits_exhausted`; when text credits run out, the AI endpoints answer `429` with `code: ai_credits_exhausted`. Image endpoint responses also carry `image_credits_used` and `image_credits_remaining`; their `credits_used` counts text credits only. If the image pool is switched off (`image.enabled: false`), images cost text credits as before. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.ai_usage import AIUsage
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+
+    try:
+        # AI credit usage
+        api_response = api_instance.get_ai_usage(workspace_uuid)
+        print("The response of AIApi->get_ai_usage:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->get_ai_usage: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+
+### Return type
+
+[**AIUsage**](AIUsage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Credit usage |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_brand_voice**
+> GetBrandVoice200Response get_brand_voice(workspace_uuid)
+
+Get the brand voice
+
+The workspace's brand voice: identity, audience, tone sliders, style rules and example posts. It is the same profile as the Brand Voice page in the app (one per workspace). `data` is `null` when no voice is set. Any workspace member may read it; reading costs no AI credits.  The AI endpoints apply it automatically: `blog-to-social` adds it to the caption instructions, `image-prompt` and `image-generate` turn it into a short visual tone line, and `image-edit` applies it when you send `use_brand_voice: true`. `image-variations` and `image-alt-text` never use it (alt text must describe the image literally). Send `use_brand_voice: false` to skip it on a call; responses report `meta.brand_voice_applied`. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.get_brand_voice200_response import GetBrandVoice200Response
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+
+    try:
+        # Get the brand voice
+        api_response = api_instance.get_brand_voice(workspace_uuid)
+        print("The response of AIApi->get_brand_voice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->get_brand_voice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+
+### Return type
+
+[**GetBrandVoice200Response**](GetBrandVoice200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The brand voice, or &#x60;null&#x60; when none is set |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -519,6 +765,263 @@ Name | Type | Description  | Notes
 **403** |  |  -  |
 **422** |  |  -  |
 **429** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **learn_brand_voice**
+> LearnBrandVoiceResponse learn_brand_voice(workspace_uuid, learn_brand_voice_input=learn_brand_voice_input)
+
+Learn a brand voice from past posts
+
+Reads the workspace's latest published posts (original text) and proposes a brand voice in the same shape as `GET /brand-voice`. Returns a draft and saves nothing unless `apply: true`.  Without `overwrite`, learned values only fill fields that are empty (tone sliders and styles still at their defaults count as empty); with `overwrite: true` they replace them. The first five sampled posts become `example_posts`. Needs at least 3 published posts (`422`, `code: not_enough_posts`). Costs one AI text credit per AI call (one retry when the reply is not usable). Admins and members only. A key limited to some accounts must send `account_ids`; only posts whose accounts are all among them are read. `apply` also needs the `write` ability. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.learn_brand_voice_input import LearnBrandVoiceInput
+from postboost.models.learn_brand_voice_response import LearnBrandVoiceResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    learn_brand_voice_input = postboost.LearnBrandVoiceInput() # LearnBrandVoiceInput |  (optional)
+
+    try:
+        # Learn a brand voice from past posts
+        api_response = api_instance.learn_brand_voice(workspace_uuid, learn_brand_voice_input=learn_brand_voice_input)
+        print("The response of AIApi->learn_brand_voice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->learn_brand_voice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **learn_brand_voice_input** | [**LearnBrandVoiceInput**](LearnBrandVoiceInput.md)|  | [optional] 
+
+### Return type
+
+[**LearnBrandVoiceResponse**](LearnBrandVoiceResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Proposed (or saved) brand voice |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**422** | Validation error, AI disabled, or fewer than 3 published posts (&#x60;code: not_enough_posts&#x60;) |  -  |
+**429** | AI text credits used up (&#x60;code: ai_credits_exhausted&#x60;) |  -  |
+**502** | The AI reply was not a usable profile (&#x60;code: ai_unusable_response&#x60;) |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repurpose_content**
+> RepurposeContent200Response repurpose_content(workspace_uuid, repurpose_input, idempotency_key=idempotency_key)
+
+Repurpose long-form content into a draft post set with a carousel
+
+Turns an article URL, a YouTube video, a PDF or pasted text into one **draft** post with a caption for every target account, plus a carousel of rendered slide images (hook, 1 to 6 idea slides, call to action; 1080×1350 PNG). Nothing is published or scheduled.  **Sources** (`source_type`): - `url`: the article is fetched and its main text extracted. - `youtube`: title, description and chapters come from YouTube; send the transcript in   `transcript` for better results (required when the description is short). - `pdf`: `pdf_url` must be a public PDF of at most 20 MB; the first 30 pages are read. - `text`: send `title` and `text`.  **Carousel per network**: Instagram, Facebook, Threads up to 10 slides; LinkedIn up to 9; X and Bluesky up to 4; other networks get the cover slide; YouTube and TikTok get none (listed in `warnings`). Without a carousel, the source image (article image or video thumbnail) is attached when available.  **AI credits**: one per target account plus one for the carousel outline. Slides are drawn without AI and cost nothing. The workspace brand voice applies unless `use_brand_voice` is `false`. Send an `Idempotency-Key` so a retried call does not create a second draft. Limited to 10 calls per minute. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.repurpose_content200_response import RepurposeContent200Response
+from postboost.models.repurpose_input import RepurposeInput
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    repurpose_input = {"source_type":"url","url":"https://example.com/blog/my-post","platforms":["instagram","linkedin_page"],"slide_count":7} # RepurposeInput | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
+
+    try:
+        # Repurpose long-form content into a draft post set with a carousel
+        api_response = api_instance.repurpose_content(workspace_uuid, repurpose_input, idempotency_key=idempotency_key)
+        print("The response of AIApi->repurpose_content:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->repurpose_content: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **repurpose_input** | [**RepurposeInput**](RepurposeInput.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
+
+### Return type
+
+[**RepurposeContent200Response**](RepurposeContent200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Draft post set created |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**422** |  |  -  |
+**429** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_brand_voice**
+> GetBrandVoice200Response update_brand_voice(workspace_uuid, brand_voice_input)
+
+Create or update the brand voice
+
+Creates the workspace's brand voice or updates it. Fields you leave out keep their current value. Admins and members only (not viewers); the workspace must have AI enabled. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.brand_voice_input import BrandVoiceInput
+from postboost.models.get_brand_voice200_response import GetBrandVoice200Response
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.AIApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    brand_voice_input = {"business_name":"Northwind Coffee","industry":"Specialty coffee roasting","personality":"Warm and curious about every bean. Never pushy.","audience":["home baristas","cafe owners"],"tone_formal":2,"tone_playful":4,"tone_technical":3,"emoji_style":"rare","hashtag_strategy":"branded","avoid_words":["cheap","best ever"]} # BrandVoiceInput | 
+
+    try:
+        # Create or update the brand voice
+        api_response = api_instance.update_brand_voice(workspace_uuid, brand_voice_input)
+        print("The response of AIApi->update_brand_voice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AIApi->update_brand_voice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **brand_voice_input** | [**BrandVoiceInput**](BrandVoiceInput.md)|  | 
+
+### Return type
+
+[**GetBrandVoice200Response**](GetBrandVoice200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The saved brand voice |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**422** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

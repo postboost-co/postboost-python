@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_mention**
-> CreateMention201Response create_mention(workspace_uuid, mention_input)
+> CreateMention201Response create_mention(workspace_uuid, mention_input, idempotency_key=idempotency_key)
 
 Create mention
 
@@ -51,10 +51,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.MentionsApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     mention_input = postboost.MentionInput() # MentionInput | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
 
     try:
         # Create mention
-        api_response = api_instance.create_mention(workspace_uuid, mention_input)
+        api_response = api_instance.create_mention(workspace_uuid, mention_input, idempotency_key=idempotency_key)
         print("The response of MentionsApi->create_mention:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **mention_input** | [**MentionInput**](MentionInput.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
 
 ### Return type
 

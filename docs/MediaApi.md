@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**update_media_folder**](MediaApi.md#update_media_folder) | **PUT** /{workspaceUuid}/media/folders/{folderUuid} | Update media folder
 [**upload_chunk**](MediaApi.md#upload_chunk) | **POST** /{workspaceUuid}/media/chunked/{uploadUuid}/upload | Upload a chunk
 [**upload_media**](MediaApi.md#upload_media) | **POST** /{workspaceUuid}/media | Upload media (binary)
+[**upload_media_base64**](MediaApi.md#upload_media_base64) | **POST** /{workspaceUuid}/media/base64 | Upload media (base64 JSON)
 
 
 # **abort_chunked_upload**
@@ -187,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_media_folder**
-> MediaFolder create_media_folder(workspace_uuid, create_media_folder_request)
+> MediaFolder create_media_folder(workspace_uuid, create_media_folder_request, idempotency_key=idempotency_key)
 
 Create media folder
 
@@ -226,10 +227,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.MediaApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     create_media_folder_request = postboost.CreateMediaFolderRequest() # CreateMediaFolderRequest | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
 
     try:
         # Create media folder
-        api_response = api_instance.create_media_folder(workspace_uuid, create_media_folder_request)
+        api_response = api_instance.create_media_folder(workspace_uuid, create_media_folder_request, idempotency_key=idempotency_key)
         print("The response of MediaApi->create_media_folder:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,6 +247,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **create_media_folder_request** | [**CreateMediaFolderRequest**](CreateMediaFolderRequest.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
 
 ### Return type
 
@@ -607,7 +610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **initiate_chunked_upload**
-> InitiateChunkedUpload201Response initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+> InitiateChunkedUpload201Response initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request, idempotency_key=idempotency_key)
 
 Initiate chunked upload
 
@@ -646,10 +649,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.MediaApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     initiate_chunked_upload_request = postboost.InitiateChunkedUploadRequest() # InitiateChunkedUploadRequest | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
 
     try:
         # Initiate chunked upload
-        api_response = api_instance.initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request)
+        api_response = api_instance.initiate_chunked_upload(workspace_uuid, initiate_chunked_upload_request, idempotency_key=idempotency_key)
         print("The response of MediaApi->initiate_chunked_upload:\n")
         pprint(api_response)
     except Exception as e:
@@ -665,6 +669,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **initiate_chunked_upload_request** | [**InitiateChunkedUploadRequest**](InitiateChunkedUploadRequest.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
 
 ### Return type
 
@@ -691,7 +696,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **initiate_remote_upload**
-> InitiateRemoteUpload201Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+> InitiateRemoteUpload201Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, idempotency_key=idempotency_key)
 
 Initiate remote upload
 
@@ -730,10 +735,11 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.MediaApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     initiate_remote_upload_request = postboost.InitiateRemoteUploadRequest() # InitiateRemoteUploadRequest | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
 
     try:
         # Initiate remote upload
-        api_response = api_instance.initiate_remote_upload(workspace_uuid, initiate_remote_upload_request)
+        api_response = api_instance.initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, idempotency_key=idempotency_key)
         print("The response of MediaApi->initiate_remote_upload:\n")
         pprint(api_response)
     except Exception as e:
@@ -749,6 +755,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **initiate_remote_upload_request** | [**InitiateRemoteUploadRequest**](InitiateRemoteUploadRequest.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
 
 ### Return type
 
@@ -1214,11 +1221,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_media**
-> Media upload_media(workspace_uuid, file, alt_text=alt_text, folder=folder)
+> Media upload_media(workspace_uuid, file, idempotency_key=idempotency_key, alt_text=alt_text, folder=folder)
 
 Upload media (binary)
 
-Upload a file directly as multipart form data.
+Upload a file directly as multipart form data. Images and videos, plus a PDF (up to 100 MB) for LinkedIn document posts: a post that attaches a PDF must have it as the only media item and may only go to LinkedIn profiles and pages. 
 
 ### Example
 
@@ -1252,12 +1259,13 @@ with postboost.ApiClient(configuration) as api_client:
     api_instance = postboost.MediaApi(api_client)
     workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
     file = None # bytearray | The file to upload.
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
     alt_text = 'alt_text_example' # str | Alternative text for accessibility. (optional)
     folder = 'folder_example' # str | UUID of the media folder to file the upload in. Omit or null for the library root. (optional)
 
     try:
         # Upload media (binary)
-        api_response = api_instance.upload_media(workspace_uuid, file, alt_text=alt_text, folder=folder)
+        api_response = api_instance.upload_media(workspace_uuid, file, idempotency_key=idempotency_key, alt_text=alt_text, folder=folder)
         print("The response of MediaApi->upload_media:\n")
         pprint(api_response)
     except Exception as e:
@@ -1273,6 +1281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_uuid** | **str**| UUID of the workspace. | 
  **file** | **bytearray**| The file to upload. | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
  **alt_text** | **str**| Alternative text for accessibility. | [optional] 
  **folder** | **str**| UUID of the media folder to file the upload in. Omit or null for the library root. | [optional] 
 
@@ -1297,6 +1306,89 @@ Name | Type | Description  | Notes
 **401** |  |  -  |
 **403** |  |  -  |
 **422** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_media_base64**
+> Media upload_media_base64(workspace_uuid, media_base64_input, idempotency_key=idempotency_key)
+
+Upload media (base64 JSON)
+
+Upload a file as base64 inside a JSON body, for agents and tools that cannot send multipart form data. The decoded file is checked exactly like `POST media` (allowed types and size limits; a PDF is accepted for LinkedIn document posts). Decoded size is capped at 20 MB; for larger files use remote upload by URL or chunked upload. 
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.media import Media
+from postboost.models.media_base64_input import MediaBase64Input
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.MediaApi(api_client)
+    workspace_uuid = 'workspace_uuid_example' # str | UUID of the workspace.
+    media_base64_input = postboost.MediaBase64Input() # MediaBase64Input | 
+    idempotency_key = 'idempotency_key_example' # str | Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with `Idempotent-Replayed: true` and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  (optional)
+
+    try:
+        # Upload media (base64 JSON)
+        api_response = api_instance.upload_media_base64(workspace_uuid, media_base64_input, idempotency_key=idempotency_key)
+        print("The response of MediaApi->upload_media_base64:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MediaApi->upload_media_base64: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_uuid** | **str**| UUID of the workspace. | 
+ **media_base64_input** | [**MediaBase64Input**](MediaBase64Input.md)|  | 
+ **idempotency_key** | **str**| Unique key (for example a UUID) that makes the request safe to retry. A repeat with the same key and body within 24 hours returns the stored response with &#x60;Idempotent-Replayed: true&#x60; and has no further effect. Keys are scoped to your user, the workspace, the method and the path.  | [optional] 
+
+### Return type
+
+[**Media**](Media.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Uploaded media object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
