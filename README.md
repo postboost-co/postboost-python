@@ -13,7 +13,7 @@ pip install postboost
 | **PyPI** | [pypi.org/project/postboost](https://pypi.org/project/postboost/) |
 | **GitHub** | [postboost-co/postboost-python](https://github.com/postboost-co/postboost-python) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.14.0 |
+| **Version** | v1.15.0 |
 
 ## Quick start
 
