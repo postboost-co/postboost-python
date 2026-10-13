@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.15.0"
+__version__ = "1.16.0"
 
 # import apis into sdk package
 from postboost.api.ai_api import AIApi
