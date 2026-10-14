@@ -8,6 +8,7 @@ from postboost.api.activity_api import ActivityApi
 from postboost.api.agents_api import AgentsApi
 from postboost.api.analytics_api import AnalyticsApi
 from postboost.api.competitors_api import CompetitorsApi
+from postboost.api.free_tools_api import FreeToolsApi
 from postboost.api.hashtag_groups_api import HashtagGroupsApi
 from postboost.api.inbox_api import InboxApi
 from postboost.api.media_api import MediaApi
