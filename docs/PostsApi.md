@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_post**
-> Post create_post(workspace_uuid, post_input, idempotency_key=idempotency_key)
+> CreatePost201Response create_post(workspace_uuid, post_input, idempotency_key=idempotency_key)
 
 Create post
 
@@ -224,7 +224,7 @@ Create a new post. Use `schedule: true` with `date` and `time` to schedule, `sch
 
 ```python
 import postboost
-from postboost.models.post import Post
+from postboost.models.create_post201_response import CreatePost201Response
 from postboost.models.post_input import PostInput
 from postboost.rest import ApiException
 from pprint import pprint
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Post**](Post.md)
+[**CreatePost201Response**](CreatePost201Response.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created post |  * Idempotent-Replayed -  <br>  |
+**201** | Created post. &#x60;warnings&#x60; lists non-blocking problems (see PostWarning); the key is absent when there are none. |  * Idempotent-Replayed -  <br>  |
 **400** |  |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
@@ -1806,7 +1806,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_post**
-> object update_post(workspace_uuid, post_uuid, post_input)
+> UpdatePost200Response update_post(workspace_uuid, post_uuid, post_input)
 
 Update post
 
@@ -1819,7 +1819,7 @@ Replaces a post's versions, accounts, tags, and scheduling options. The post mus
 ```python
 import postboost
 from postboost.models.post_input import PostInput
-from postboost.models.object import object
+from postboost.models.update_post200_response import UpdatePost200Response
 from postboost.rest import ApiException
 from pprint import pprint
 
@@ -1869,7 +1869,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**UpdatePost200Response**](UpdatePost200Response.md)
 
 ### Authorization
 
@@ -1884,7 +1884,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**200** | Post updated. &#x60;warnings&#x60; lists non-blocking problems (see PostWarning); the key is absent when there are none. |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
 **404** |  |  -  |
