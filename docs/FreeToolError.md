@@ -6,6 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **str** |  | 
+**retry_after** | **int** | 429 only: seconds until the limit resets. | [optional] 
+**register_url** | **str** | 429 for guests: sign up for a token with higher limits. | [optional] 
+**upgrade_url** | **str** | 429 when a token user reached the plan&#39;s daily cap. | [optional] 
 
 ## Example
 
