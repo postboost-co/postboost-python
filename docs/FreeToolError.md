@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **str** |  | 
 **retry_after** | **int** | 429 only: seconds until the limit resets. | [optional] 
-**register_url** | **str** | 429 for guests: sign up for a token with higher limits. | [optional] 
-**upgrade_url** | **str** | 429 when a token user reached the plan&#39;s daily cap. | [optional] 
+**code** | **str** | 429 of a paid AI tool: &#x60;ai_credits_exhausted&#x60;. | [optional] 
+**register_url** | **str** | 429 for guests: sign up for a token with higher limits. 401 of a paid AI tool: sign up for a token. | [optional] 
+**upgrade_url** | **str** | 429 when a token user reached the plan&#39;s daily cap, or a paid AI tool&#39;s workspace has no AI credits left. | [optional] 
 
 ## Example
 
