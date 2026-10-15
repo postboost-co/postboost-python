@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | **str** | The post text, up to 10,000 characters (twice the longest network limit). | [optional] [default to '']
+**text** | **str** | The post text, up to 10,000 characters (twice the longest network limit); 5,000 without an API token. | [optional] [default to '']
 **network** | **str** | Count for one network only; all networks when omitted. | [optional] 
 
 ## Example
