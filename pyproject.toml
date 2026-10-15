@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "postboost"
-version = "1.30.0"
+version = "1.31.0"
 description = "PostBoost API"
 authors = ["PostBoost Support <hi@postboost.co>"]
 license = "Commercial"
