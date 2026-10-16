@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **accounts** | [**List[Account]**](Account.md) |  | 
 **versions** | [**List[PostVersion]**](PostVersion.md) |  | 
 **tags** | [**List[Tag]**](Tag.md) |  | 
-**scheduled_at** | **datetime** |  | [optional] 
-**published_at** | **datetime** |  | [optional] 
-**created_at** | **datetime** |  | 
+**scheduled_at** | **str** | &#x60;Y-m-d H:i:s&#x60; in UTC (not RFC 3339). | [optional] 
+**published_at** | **str** | &#x60;Y-m-d H:i:s&#x60; in UTC (not RFC 3339). | [optional] 
+**created_at** | **str** | &#x60;Y-m-d H:i:s&#x60; in UTC (not RFC 3339). | 
 **trashed** | **bool** |  | 
 **warnings** | [**List[PostWarning]**](PostWarning.md) | Present only when there is at least one warning. | [optional] 
 
