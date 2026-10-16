@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements
 [**clean_text**](FreeToolsApi.md#clean_text) | **POST** /tools/ai-text-cleaner | Clean AI-written text: dashes, quotes, invisible characters, markdown
 [**count_characters**](FreeToolsApi.md#count_characters) | **POST** /tools/social-media-character-counter | Count characters as each network counts them
+[**format_instagram_caption**](FreeToolsApi.md#format_instagram_caption) | **POST** /tools/instagram-line-break-generator | Keep blank lines in an Instagram caption with spacer lines, and count it
 [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists
 [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits)
 [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles
@@ -665,6 +666,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolCountCharactersResponse**](FreeToolCountCharactersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **format_instagram_caption**
+> FreeToolFormatInstagramCaptionResponse format_instagram_caption(free_tool_format_instagram_caption_request)
+
+Keep blank lines in an Instagram caption with spacer lines, and count it
+
+Keep blank lines in an Instagram caption with spacer lines, and count it. The same logic as the free web tool at https://postboost.co/tools/instagram-line-break-generator. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_format_instagram_caption_request import FreeToolFormatInstagramCaptionRequest
+from postboost.models.free_tool_format_instagram_caption_response import FreeToolFormatInstagramCaptionResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_format_instagram_caption_request = {"text":"Line one\n\n\nLine two  "} # FreeToolFormatInstagramCaptionRequest | 
+
+    try:
+        # Keep blank lines in an Instagram caption with spacer lines, and count it
+        api_response = api_instance.format_instagram_caption(free_tool_format_instagram_caption_request)
+        print("The response of FreeToolsApi->format_instagram_caption:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->format_instagram_caption: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_format_instagram_caption_request** | [**FreeToolFormatInstagramCaptionRequest**](FreeToolFormatInstagramCaptionRequest.md)|  | 
+
+### Return type
+
+[**FreeToolFormatInstagramCaptionResponse**](FreeToolFormatInstagramCaptionResponse.md)
 
 ### Authorization
 
