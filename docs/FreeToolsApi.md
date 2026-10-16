@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio
 [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size
 [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate
+[**calculate_social_roi**](FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI
 [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags)
 [**check_post**](FreeToolsApi.md#check_post) | **POST** /tools/social-media-post-checker | Check a post against each network&#39;s publishing rules
 [**check_youtube_thumbnail**](FreeToolsApi.md#check_youtube_thumbnail) | **POST** /tools/youtube-thumbnail-size-checker | Check a YouTube thumbnail&#39;s ratio, width, file size and format against YouTube&#39;s requirements
@@ -301,6 +302,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolCalculateEngagementRateResponse**](FreeToolCalculateEngagementRateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **calculate_social_roi**
+> FreeToolCalculateSocialRoiResponse calculate_social_roi(free_tool_calculate_social_roi_request)
+
+Calculate social media ROI
+
+Calculate social media ROI. The same logic as the free web tool at https://postboost.co/tools/social-media-roi-calculator. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_calculate_social_roi_request import FreeToolCalculateSocialRoiRequest
+from postboost.models.free_tool_calculate_social_roi_response import FreeToolCalculateSocialRoiResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_calculate_social_roi_request = {"revenue":5000,"costs":{"ad_spend":1000,"labor_hours":10,"hourly_rate":50}} # FreeToolCalculateSocialRoiRequest | 
+
+    try:
+        # Calculate social media ROI
+        api_response = api_instance.calculate_social_roi(free_tool_calculate_social_roi_request)
+        print("The response of FreeToolsApi->calculate_social_roi:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->calculate_social_roi: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_calculate_social_roi_request** | [**FreeToolCalculateSocialRoiRequest**](FreeToolCalculateSocialRoiRequest.md)|  | 
+
+### Return type
+
+[**FreeToolCalculateSocialRoiResponse**](FreeToolCalculateSocialRoiResponse.md)
 
 ### Authorization
 
