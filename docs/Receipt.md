@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **currency** | **str** |  | 
 **receipt_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**paid_at** | **datetime** |  | 
-**created_at** | **datetime** |  | 
+**paid_at** | **str** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | 
+**created_at** | **str** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | 
 
 ## Example
 

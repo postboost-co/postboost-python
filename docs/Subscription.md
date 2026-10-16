@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **platform_plan_id** | **str** |  | 
 **status** | [**SubscriptionStatus**](SubscriptionStatus.md) |  | 
 **recurring** | **bool** |  | 
-**trial_ends_at** | **datetime** |  | [optional] 
-**paused_from** | **datetime** |  | [optional] 
-**ends_at** | **datetime** |  | [optional] 
+**trial_ends_at** | **str** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] 
+**paused_from** | **str** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] 
+**ends_at** | **str** | Display date in the configured timezone, &#x60;M j, Y&#x60; (not RFC 3339). | [optional] 
 
 ## Example
 

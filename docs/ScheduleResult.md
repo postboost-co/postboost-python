@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | 
-**scheduled_at** | **datetime** |  | [optional] 
+**scheduled_at** | **str** | &#x60;Y-m-d H:i:s&#x60; in UTC (not RFC 3339). | [optional] 
 **needs_approval** | **bool** | True when the post now waits for approval instead of being scheduled (not returned by approve). | [optional] 
 
 ## Example
