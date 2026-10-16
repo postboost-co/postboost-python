@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source
 [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
 [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
+[**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
 [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
 [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread
 
@@ -1676,6 +1677,79 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | The free tools. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
 **401** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **plan_content_calendar**
+> FreeToolPlanContentCalendarResponse plan_content_calendar(free_tool_plan_content_calendar_request)
+
+Plan a social media content calendar and get it as CSV and ICS
+
+Plan a social media content calendar and get it as CSV and ICS. The same logic as the free web tool at https://postboost.co/tools/social-media-content-calendar-generator. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_plan_content_calendar_request import FreeToolPlanContentCalendarRequest
+from postboost.models.free_tool_plan_content_calendar_response import FreeToolPlanContentCalendarResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_plan_content_calendar_request = {"start_date":"2026-11-02","weeks":1,"posts_per_week":{"instagram":3,"linkedin":2},"times":{"linkedin":"08:30"},"pillars":["Tips","Product"]} # FreeToolPlanContentCalendarRequest | 
+
+    try:
+        # Plan a social media content calendar and get it as CSV and ICS
+        api_response = api_instance.plan_content_calendar(free_tool_plan_content_calendar_request)
+        print("The response of FreeToolsApi->plan_content_calendar:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->plan_content_calendar: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_plan_content_calendar_request** | [**FreeToolPlanContentCalendarRequest**](FreeToolPlanContentCalendarRequest.md)|  | 
+
+### Return type
+
+[**FreeToolPlanContentCalendarResponse**](FreeToolPlanContentCalendarResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
 **429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

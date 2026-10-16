@@ -13,7 +13,7 @@ pip install postboost
 | **PyPI** | [pypi.org/project/postboost](https://pypi.org/project/postboost/) |
 | **GitHub** | [postboost-co/postboost-python](https://github.com/postboost-co/postboost-python) |
 | **Docs** | [postboost.co/docs/api](https://postboost.co/docs/api) |
-| **Version** | v1.43.0 |
+| **Version** | v1.44.0 |
 
 ## Quick start
 
@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *FreeToolsApi* | [**get_image_sizes**](docs/FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source
 *FreeToolsApi* | [**get_video_specs**](docs/FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
 *FreeToolsApi* | [**list_free_tools**](docs/FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
+*FreeToolsApi* | [**plan_content_calendar**](docs/FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
 *FreeToolsApi* | [**preview_post**](docs/FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
 *FreeToolsApi* | [**split_thread**](docs/FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread
 *HashtagGroupsApi* | [**create_hashtag_group**](docs/HashtagGroupsApi.md#create_hashtag_group) | **POST** /{workspaceUuid}/hashtag-groups | Create a hashtag group
