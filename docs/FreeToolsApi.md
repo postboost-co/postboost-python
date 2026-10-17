@@ -31,10 +31,12 @@ Method | HTTP request | Description
 [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source
 [**get_safe_zones**](FreeToolsApi.md#get_safe_zones) | **POST** /tools/safe-zone-checker | Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame
 [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
+[**list_awareness_days**](FreeToolsApi.md#list_awareness_days) | **GET** /tools/social-media-holiday-calendar | List public holidays, awareness days and social media days by date, country, type and topic, with sources
 [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
 [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
 [**plan_posting_frequency**](FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network
 [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
+[**score_social_audit**](FreeToolsApi.md#score_social_audit) | **POST** /tools/social-media-audit-template | Score a social media audit checklist and get the top fixes
 [**search_emoji**](FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post
 [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread
 
@@ -2061,6 +2063,85 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_awareness_days**
+> FreeToolListAwarenessDaysResponse list_awareness_days(var_from=var_from, to=to, country=country, type=type, topic=topic)
+
+List public holidays, awareness days and social media days by date, country, type and topic, with sources
+
+List public holidays, awareness days and social media days by date, country, type and topic, with sources. The same logic as the free web tool at https://postboost.co/tools/social-media-holiday-calendar. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_list_awareness_days_response import FreeToolListAwarenessDaysResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    var_from = 'var_from_example' # str |  (optional)
+    to = 'to_example' # str |  (optional)
+    country = 'country_example' # str |  (optional)
+    type = 'type_example' # str |  (optional)
+    topic = 'topic_example' # str |  (optional)
+
+    try:
+        # List public holidays, awareness days and social media days by date, country, type and topic, with sources
+        api_response = api_instance.list_awareness_days(var_from=var_from, to=to, country=country, type=type, topic=topic)
+        print("The response of FreeToolsApi->list_awareness_days:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->list_awareness_days: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_from** | **str**|  | [optional] 
+ **to** | **str**|  | [optional] 
+ **country** | **str**|  | [optional] 
+ **type** | **str**|  | [optional] 
+ **topic** | **str**|  | [optional] 
+
+### Return type
+
+[**FreeToolListAwarenessDaysResponse**](FreeToolListAwarenessDaysResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_free_tools**
 > FreeToolList list_free_tools()
 
@@ -2324,6 +2405,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolPreviewPostResponse**](FreeToolPreviewPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **score_social_audit**
+> FreeToolScoreSocialAuditResponse score_social_audit(free_tool_score_social_audit_request)
+
+Score a social media audit checklist and get the top fixes
+
+Score a social media audit checklist and get the top fixes. The same logic as the free web tool at https://postboost.co/tools/social-media-audit-template. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_score_social_audit_request import FreeToolScoreSocialAuditRequest
+from postboost.models.free_tool_score_social_audit_response import FreeToolScoreSocialAuditResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_score_social_audit_request = {"target_posts_per_week":4,"instagram":{"profile":"yes","bio":"yes","link_tracking":"no","frequency":"partly","replies":"yes","native_formats":"yes","pinned":"no","engagement_rate":"partly"},"linkedin":{"profile":"yes","bio":"partly","link_tracking":"no","frequency":"yes","replies":"partly","native_formats":"no","pinned":"yes","engagement_rate":"no"}} # FreeToolScoreSocialAuditRequest | 
+
+    try:
+        # Score a social media audit checklist and get the top fixes
+        api_response = api_instance.score_social_audit(free_tool_score_social_audit_request)
+        print("The response of FreeToolsApi->score_social_audit:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->score_social_audit: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_score_social_audit_request** | [**FreeToolScoreSocialAuditRequest**](FreeToolScoreSocialAuditRequest.md)|  | 
+
+### Return type
+
+[**FreeToolScoreSocialAuditResponse**](FreeToolScoreSocialAuditResponse.md)
 
 ### Authorization
 
