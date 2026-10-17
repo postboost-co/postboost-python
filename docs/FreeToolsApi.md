@@ -6,8 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**build_utm_url**](FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL
 [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio
+[**calculate_carousel_slices**](FreeToolsApi.md#calculate_carousel_slices) | **POST** /tools/instagram-carousel-splitter | Split a wide image into seamless Instagram carousel slides
 [**calculate_crop**](FreeToolsApi.md#calculate_crop) | **POST** /tools/social-media-image-sizes/crop | Calculate the crop box that fits an image to a social media size
 [**calculate_engagement_rate**](FreeToolsApi.md#calculate_engagement_rate) | **POST** /tools/engagement-rate-calculator | Calculate an engagement rate
+[**calculate_influencer_rate**](FreeToolsApi.md#calculate_influencer_rate) | **POST** /tools/influencer-rate-calculator | Estimate an influencer&#39;s rate for one sponsored deliverable
 [**calculate_social_roi**](FreeToolsApi.md#calculate_social_roi) | **POST** /tools/social-media-roi-calculator | Calculate social media ROI
 [**calculate_x_api_cost**](FreeToolsApi.md#calculate_x_api_cost) | **POST** /tools/x-api-cost-calculator | Calculate the monthly X API cost
 [**check_link_preview**](FreeToolsApi.md#check_link_preview) | **POST** /tools/link-preview-checker | Check how a link previews on X, LinkedIn, Facebook and chat apps (Open Graph and Twitter card tags)
@@ -27,9 +29,11 @@ Method | HTTP request | Description
 [**get_best_times_to_post**](FreeToolsApi.md#get_best_times_to_post) | **GET** /tools/best-time-to-post | Get the best times to post per network from published studies, with sources
 [**get_hook_templates**](FreeToolsApi.md#get_hook_templates) | **GET** /tools/hook-generator/library | Get free hook templates for social media posts, filtered by style and network
 [**get_image_sizes**](FreeToolsApi.md#get_image_sizes) | **GET** /tools/social-media-image-sizes | Get social media image sizes per network, each with its source
+[**get_safe_zones**](FreeToolsApi.md#get_safe_zones) | **POST** /tools/safe-zone-checker | Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame
 [**get_video_specs**](FreeToolsApi.md#get_video_specs) | **GET** /tools/social-media-video-specs | Get social media video ratios, resolutions, lengths and file size limits per network, with sources
 [**list_free_tools**](FreeToolsApi.md#list_free_tools) | **GET** /tools | List the free tools
 [**plan_content_calendar**](FreeToolsApi.md#plan_content_calendar) | **POST** /tools/social-media-content-calendar-generator | Plan a social media content calendar and get it as CSV and ICS
+[**plan_posting_frequency**](FreeToolsApi.md#plan_posting_frequency) | **POST** /tools/posting-frequency-planner | Plan how often to post on each network
 [**preview_post**](FreeToolsApi.md#preview_post) | **POST** /tools/social-media-post-preview | Preview where a post folds and when its image is cropped on Instagram, X, LinkedIn and Facebook
 [**search_emoji**](FreeToolsApi.md#search_emoji) | **POST** /tools/social-media-emoji-picker | Search emoji by name or keyword, to copy and paste into a post
 [**split_thread**](FreeToolsApi.md#split_thread) | **POST** /tools/x-thread-maker | Split long text into a thread
@@ -181,6 +185,79 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **calculate_carousel_slices**
+> FreeToolCalculateCarouselSlicesResponse calculate_carousel_slices(free_tool_calculate_carousel_slices_request)
+
+Split a wide image into seamless Instagram carousel slides
+
+Split a wide image into seamless Instagram carousel slides. The same logic as the free web tool at https://postboost.co/tools/instagram-carousel-splitter. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_calculate_carousel_slices_request import FreeToolCalculateCarouselSlicesRequest
+from postboost.models.free_tool_calculate_carousel_slices_response import FreeToolCalculateCarouselSlicesResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_calculate_carousel_slices_request = {"width":3240,"height":1350,"slides":3,"ratio":"4:5"} # FreeToolCalculateCarouselSlicesRequest | 
+
+    try:
+        # Split a wide image into seamless Instagram carousel slides
+        api_response = api_instance.calculate_carousel_slices(free_tool_calculate_carousel_slices_request)
+        print("The response of FreeToolsApi->calculate_carousel_slices:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->calculate_carousel_slices: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_calculate_carousel_slices_request** | [**FreeToolCalculateCarouselSlicesRequest**](FreeToolCalculateCarouselSlicesRequest.md)|  | 
+
+### Return type
+
+[**FreeToolCalculateCarouselSlicesResponse**](FreeToolCalculateCarouselSlicesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **calculate_crop**
 > FreeToolCalculateCropResponse calculate_crop(free_tool_calculate_crop_request)
 
@@ -305,6 +382,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolCalculateEngagementRateResponse**](FreeToolCalculateEngagementRateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **calculate_influencer_rate**
+> FreeToolCalculateInfluencerRateResponse calculate_influencer_rate(free_tool_calculate_influencer_rate_request)
+
+Estimate an influencer's rate for one sponsored deliverable
+
+Estimate an influencer's rate for one sponsored deliverable. The same logic as the free web tool at https://postboost.co/tools/influencer-rate-calculator. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_calculate_influencer_rate_request import FreeToolCalculateInfluencerRateRequest
+from postboost.models.free_tool_calculate_influencer_rate_response import FreeToolCalculateInfluencerRateResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_calculate_influencer_rate_request = {"network":"instagram","followers":25000,"deliverable":"reel","usage_rights_months":3} # FreeToolCalculateInfluencerRateRequest | 
+
+    try:
+        # Estimate an influencer's rate for one sponsored deliverable
+        api_response = api_instance.calculate_influencer_rate(free_tool_calculate_influencer_rate_request)
+        print("The response of FreeToolsApi->calculate_influencer_rate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->calculate_influencer_rate: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_calculate_influencer_rate_request** | [**FreeToolCalculateInfluencerRateRequest**](FreeToolCalculateInfluencerRateRequest.md)|  | 
+
+### Return type
+
+[**FreeToolCalculateInfluencerRateResponse**](FreeToolCalculateInfluencerRateResponse.md)
 
 ### Authorization
 
@@ -1767,6 +1917,79 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_safe_zones**
+> FreeToolGetSafeZonesResponse get_safe_zones(free_tool_get_safe_zones_request)
+
+Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame
+
+Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame. The same logic as the free web tool at https://postboost.co/tools/safe-zone-checker. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_get_safe_zones_request import FreeToolGetSafeZonesRequest
+from postboost.models.free_tool_get_safe_zones_response import FreeToolGetSafeZonesResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_get_safe_zones_request = {"platform":"tiktok"} # FreeToolGetSafeZonesRequest | 
+
+    try:
+        # Get the TikTok, Instagram Reels or YouTube Shorts safe zones for a vertical frame
+        api_response = api_instance.get_safe_zones(free_tool_get_safe_zones_request)
+        print("The response of FreeToolsApi->get_safe_zones:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->get_safe_zones: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_get_safe_zones_request** | [**FreeToolGetSafeZonesRequest**](FreeToolGetSafeZonesRequest.md)|  | 
+
+### Return type
+
+[**FreeToolGetSafeZonesResponse**](FreeToolGetSafeZonesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_video_specs**
 > FreeToolGetVideoSpecsResponse get_video_specs(network=network)
 
@@ -1955,6 +2178,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolPlanContentCalendarResponse**](FreeToolPlanContentCalendarResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **plan_posting_frequency**
+> FreeToolPlanPostingFrequencyResponse plan_posting_frequency(free_tool_plan_posting_frequency_request)
+
+Plan how often to post on each network
+
+Plan how often to post on each network. The same logic as the free web tool at https://postboost.co/tools/posting-frequency-planner. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_plan_posting_frequency_request import FreeToolPlanPostingFrequencyRequest
+from postboost.models.free_tool_plan_posting_frequency_response import FreeToolPlanPostingFrequencyResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_plan_posting_frequency_request = {"networks":["instagram","linkedin","tiktok"],"posts_per_week_capacity":12} # FreeToolPlanPostingFrequencyRequest | 
+
+    try:
+        # Plan how often to post on each network
+        api_response = api_instance.plan_posting_frequency(free_tool_plan_posting_frequency_request)
+        print("The response of FreeToolsApi->plan_posting_frequency:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->plan_posting_frequency: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_plan_posting_frequency_request** | [**FreeToolPlanPostingFrequencyRequest**](FreeToolPlanPostingFrequencyRequest.md)|  | 
+
+### Return type
+
+[**FreeToolPlanPostingFrequencyResponse**](FreeToolPlanPostingFrequencyResponse.md)
 
 ### Authorization
 
