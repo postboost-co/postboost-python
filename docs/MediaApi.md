@@ -532,7 +532,7 @@ Name | Type | Description  | Notes
 
 Get remote upload status
 
-Poll the status of an in-progress remote media download.
+Poll a background download started by `initiateRemoteUpload` until `status` is `completed` or `failed`. `status` moves from `pending` to `downloading` and `processing`, and ends as `completed` (with `media`) or `failed` (with `error`). The final result is returned once: after a `completed` or `failed` response the download id is forgotten and later polls return `404`, as do ids older than one hour. 
 
 ### Example
 
@@ -606,6 +606,7 @@ Name | Type | Description  | Notes
 **200** | Download status |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
+**404** | Unknown download id, one from another workspace, one older than an hour, or one whose final result was already returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -696,11 +697,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **initiate_remote_upload**
-> InitiateRemoteUpload201Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, idempotency_key=idempotency_key)
+> InitiateRemoteUpload200Response initiate_remote_upload(workspace_uuid, initiate_remote_upload_request, idempotency_key=idempotency_key)
 
 Initiate remote upload
 
-Download a file from a remote URL into the media library. For small files the media object is returned immediately. For large files a `download_id` is returned — poll the status endpoint. 
+Download a file from a remote URL into the media library. A file under 10 MB (or one whose server does not send its size) is downloaded during the request: the response has `status: completed` and the `media` object, or `status: failed` and an `error`. A larger file downloads in the background: the response has `status: pending` and a `download_id`; poll `getRemoteUploadStatus` with it until `status` is `completed` or `failed`. 
 
 ### Example
 
@@ -708,7 +709,7 @@ Download a file from a remote URL into the media library. For small files the me
 
 ```python
 import postboost
-from postboost.models.initiate_remote_upload201_response import InitiateRemoteUpload201Response
+from postboost.models.initiate_remote_upload200_response import InitiateRemoteUpload200Response
 from postboost.models.initiate_remote_upload_request import InitiateRemoteUploadRequest
 from postboost.rest import ApiException
 from pprint import pprint
@@ -759,7 +760,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InitiateRemoteUpload201Response**](InitiateRemoteUpload201Response.md)
+[**InitiateRemoteUpload200Response**](InitiateRemoteUpload200Response.md)
 
 ### Authorization
 
@@ -774,7 +775,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Media object or download job |  -  |
+**200** | The imported media, the download failure, or a background download to poll |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
 **422** |  |  -  |

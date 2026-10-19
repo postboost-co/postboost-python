@@ -7,7 +7,7 @@ One item of a version's `content` array. The first item is always the post itsel
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **str** | Post text/caption. For a second item on Facebook Page, Instagram or LinkedIn this is the first comment. | [optional] 
-**url** | **str** |  | [optional] 
+**url** | **str** | Link shown as a preview card on LinkedIn, Bluesky and Facebook Pages (Facebook builds the card from the page&#39;s own Open Graph tags). If omitted and the item has no media, the first link in &#x60;body&#x60; is used. | [optional] 
 **media** | **List[int]** | Array of media IDs from the media library. | [optional] 
 **video_thumbs** | **List[object]** |  | [optional] 
 
