@@ -4,6 +4,7 @@ All URIs are relative to *https://postboost.co/app/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**build_agent_skill**](FreeToolsApi.md#build_agent_skill) | **POST** /tools/social-media-agent-skill-builder | Build a SKILL.md, AGENTS.md or system prompt for a social media agent
 [**build_hashtag_groups**](FreeToolsApi.md#build_hashtag_groups) | **POST** /tools/hashtag-group-builder | Clean, dedupe and split hashtags into groups that fit a network&#39;s hashtag cap
 [**build_utm_url**](FreeToolsApi.md#build_utm_url) | **POST** /tools/utm-builder | Build a UTM-tagged campaign URL
 [**calculate_aspect_ratio**](FreeToolsApi.md#calculate_aspect_ratio) | **POST** /tools/aspect-ratio-calculator | Calculate an aspect ratio, or the missing side of an image at a given ratio
@@ -55,6 +56,79 @@ Method | HTTP request | Description
 [**summarize_report**](FreeToolsApi.md#summarize_report) | **POST** /tools/social-media-report-generator | Summarize social media post metrics into a report
 [**verify_webhook_signature**](FreeToolsApi.md#verify_webhook_signature) | **POST** /tools/webhook-signature-verifier | Verify an HMAC webhook signature
 
+
+# **build_agent_skill**
+> FreeToolBuildAgentSkillResponse build_agent_skill(free_tool_build_agent_skill_request)
+
+Build a SKILL.md, AGENTS.md or system prompt for a social media agent
+
+Build a SKILL.md, AGENTS.md or system prompt for a social media agent. The same logic as the free web tool at https://postboost.co/tools/social-media-agent-skill-builder. No account needed: call it without a token, or with any API token.
+
+### Example
+
+
+```python
+import postboost
+from postboost.models.free_tool_build_agent_skill_request import FreeToolBuildAgentSkillRequest
+from postboost.models.free_tool_build_agent_skill_response import FreeToolBuildAgentSkillResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_build_agent_skill_request = {"brand":"Acme Bakery","tasks":["draft_posts"],"networks":["instagram"],"daily_cap":3} # FreeToolBuildAgentSkillRequest | 
+
+    try:
+        # Build a SKILL.md, AGENTS.md or system prompt for a social media agent
+        api_response = api_instance.build_agent_skill(free_tool_build_agent_skill_request)
+        print("The response of FreeToolsApi->build_agent_skill:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->build_agent_skill: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_build_agent_skill_request** | [**FreeToolBuildAgentSkillRequest**](FreeToolBuildAgentSkillRequest.md)|  | 
+
+### Return type
+
+[**FreeToolBuildAgentSkillResponse**](FreeToolBuildAgentSkillResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** |  |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **build_hashtag_groups**
 > FreeToolBuildHashtagGroupsResponse build_hashtag_groups(free_tool_build_hashtag_groups_request)
