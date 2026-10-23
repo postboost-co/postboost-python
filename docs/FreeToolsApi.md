@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**format_linked_in_post**](FreeToolsApi.md#format_linked_in_post) | **POST** /tools/linkedin-post-formatter | Format a LinkedIn post with bold, italic and lists
 [**generate_alt_text**](FreeToolsApi.md#generate_alt_text) | **POST** /tools/alt-text-generator | Write alt text for an image with AI (needs a token, spends AI credits)
 [**generate_bio**](FreeToolsApi.md#generate_bio) | **POST** /tools/instagram-bio-generator | Write five profile bios with AI (needs a token, spends AI credits)
+[**generate_brand_voice**](FreeToolsApi.md#generate_brand_voice) | **POST** /tools/brand-voice-generator | Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
 [**generate_caption**](FreeToolsApi.md#generate_caption) | **POST** /tools/instagram-caption-generator | Write three post captions for a topic with AI (needs a token, spends AI credits)
 [**generate_fancy_text**](FreeToolsApi.md#generate_fancy_text) | **POST** /tools/fancy-text-generator | Convert text to fancy Unicode styles
 [**generate_hashtags**](FreeToolsApi.md#generate_hashtags) | **POST** /tools/instagram-hashtag-generator | Generate hashtags for a post topic with AI (needs a token, spends AI credits)
@@ -1815,6 +1816,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FreeToolGenerateBioResponse**](FreeToolGenerateBioResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tool output. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  |
+**401** | No API token, or an invalid one. The body has &#x60;register_url&#x60; to create a free account. |  -  |
+**403** | &#x60;workspace&#x60; is not a workspace you belong to, or your account has no workspace, or a scoped API key lacks the &#x60;ai&#x60; ability or is bound to another workspace (&#x60;code: insufficient_scope&#x60;). |  -  |
+**413** | The request body is larger than 128 KB. |  -  |
+**422** |  |  -  |
+**429** | The workspace has no AI credits left this billing cycle (&#x60;code: ai_credits_exhausted&#x60;, &#x60;upgrade_url&#x60;), or the per-minute limit was reached. Rate limit reached. Without a token: 30 calls per minute and 500 per UTC day per IP address (IPv6 per /64). With a token: 300 per minute per user; the Free plan also has 1,000 calls per UTC day, paid plans have no daily cap. |  * X-RateLimit-Limit - Calls allowed in the limit window closest to running out. <br>  * X-RateLimit-Remaining - Calls left in that window. <br>  * Retry-After - Seconds until the limit resets. <br>  |
+**502** | The AI provider failed or timed out. No credit was spent. |  -  |
+**503** | AI tools are switched off right now. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **generate_brand_voice**
+> FreeToolGenerateBrandVoiceResponse generate_brand_voice(free_tool_generate_brand_voice_request)
+
+Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
+
+Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits). The same logic as the free web tool at https://postboost.co/tools/brand-voice-generator. Needs an API token (a scoped key needs the `ai` ability and pays with its own workspace). A new generation spends 1 AI credit of the workspace you name (or your active workspace); a repeated identical request is answered from the cache for free.
+
+### Example
+
+* Bearer Authentication (bearerAuth):
+
+```python
+import postboost
+from postboost.models.free_tool_generate_brand_voice_request import FreeToolGenerateBrandVoiceRequest
+from postboost.models.free_tool_generate_brand_voice_response import FreeToolGenerateBrandVoiceResponse
+from postboost.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://postboost.co/app/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = postboost.Configuration(
+    host = "https://postboost.co/app/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: bearerAuth
+configuration = postboost.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with postboost.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = postboost.FreeToolsApi(api_client)
+    free_tool_generate_brand_voice_request = {"posts":["Monday fact: a cooled espresso shot loses most of its aroma in 3 minutes. Drink it while it's warm ☕\n\nWhat's your go-to morning order?","New on the shelf: our Ethiopia Guji, washed process. Think peach, black tea and a clean finish. Roasted on Tuesday, shipped on Wednesday.","We don't do flavoured syrups. Good beans don't need them. Ask us for a recommendation instead ☕","Brew guide, part 3: grind for the V60 should look like coarse sand. Too fine and it drips forever, too coarse and it tastes thin.\n\nSave this for your next pour-over.","Thank you for 5 years on Mill Street! Coffee is on us this Saturday from 8 to 10. Bring a friend."],"business_name":"Mill Street Roasters"} # FreeToolGenerateBrandVoiceRequest | 
+
+    try:
+        # Derive a brand voice from 3 to 10 of your posts with AI: traits with quoted evidence, a guide, an AI system prompt and PostBoost brand voice JSON (needs a token, spends AI credits)
+        api_response = api_instance.generate_brand_voice(free_tool_generate_brand_voice_request)
+        print("The response of FreeToolsApi->generate_brand_voice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FreeToolsApi->generate_brand_voice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **free_tool_generate_brand_voice_request** | [**FreeToolGenerateBrandVoiceRequest**](FreeToolGenerateBrandVoiceRequest.md)|  | 
+
+### Return type
+
+[**FreeToolGenerateBrandVoiceResponse**](FreeToolGenerateBrandVoiceResponse.md)
 
 ### Authorization
 
